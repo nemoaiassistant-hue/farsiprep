@@ -308,27 +308,9 @@
       <p class="section-title-en">${rules.titleEn}</p>
     `;
 
-    // Listen All button
-    html += `
-      <div class="listen-all-bar">
-        <button class="listen-all-btn" id="listenAllBtn">
-          <span class="listen-all-icon">🔊</span>
-          <span>شنیدن همه / Listen All</span>
-        </button>
-        <button class="audio-toggle-btn ${state.audioEnabled ? 'on' : ''}" id="audioToggleBtn" title="Audio on/off">
-          ${state.audioEnabled ? '🔊' : '🔇'}
-        </button>
-      </div>
-    `;
-
-    const allFaTexts = [];
-    const allRuleIds = [];
-
     rules.rules.forEach(rule => {
       const ruleId = catId + '-' + rule.num;
       const sign = findSignForRule(rule);
-      allFaTexts.push(rule.fa);
-      allRuleIds.push(ruleId);
 
       html += `<div class="rule-card" data-rule-id="${ruleId}">`;
       html += `<div class="rule-header">`;
@@ -346,10 +328,6 @@
 
       html += `<div class="rule-text-row">`;
       html += `<div class="rule-text">${rule.fa.replace(/\n/g, '<br>')}</div>`;
-      // Audio button
-      html += `<button class="speak-btn" data-speak-rule="${ruleId}" data-speak-text="${escapeAttr(rule.fa)}" title="Listen">
-        <span class="speak-icon" data-speaking-indicator="${ruleId}">🔊</span>
-      </button>`;
       html += `</div>`;
 
       html += `<div class="rule-text-en">${rule.en.replace(/\n/g, '<br>')}</div>`;
@@ -390,47 +368,6 @@
     const quizBtn = $('#startQuizBtn');
     if (quizBtn) quizBtn.addEventListener('click', () => startQuiz(catId));
 
-    // Bind speak buttons
-    $$('.speak-btn').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const ruleId = btn.dataset.speakRule;
-        const text = btn.dataset.speakText;
-        if (state.speakingRuleId === ruleId) {
-          stopSpeaking();
-        } else {
-          speakFarsi(text, ruleId);
-        }
-      });
-    });
-
-    // Bind listen all
-    const laBtn = $('#listenAllBtn');
-    if (laBtn) {
-      laBtn.addEventListener('click', () => {
-        if (state.listenAllPlaying) {
-          stopListenAll();
-          laBtn.classList.remove('playing');
-        } else {
-          laBtn.classList.add('playing');
-          speakFarsiSequential(allFaTexts, allRuleIds, () => {
-            laBtn.classList.remove('playing');
-          });
-        }
-      });
-    }
-
-    // Bind audio toggle
-    const atBtn = $('#audioToggleBtn');
-    if (atBtn) {
-      atBtn.addEventListener('click', () => {
-        state.audioEnabled = !state.audioEnabled;
-        localStorage.setItem('hc_audio', JSON.stringify(state.audioEnabled));
-        atBtn.textContent = state.audioEnabled ? '🔊' : '🔇';
-        atBtn.classList.toggle('on', state.audioEnabled);
-        if (!state.audioEnabled) stopListenAll();
-      });
-    }
   }
 
   // =============================================
