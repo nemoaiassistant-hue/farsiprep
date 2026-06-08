@@ -783,9 +783,10 @@
 
     const readLang = state.readLang || 'fa';
     const isFa = readLang === 'fa';
+    const isEn = readLang === 'en';
     const isBoth = readLang === 'both';
     const showFa = isFa || isBoth;
-    const showEn = !isFa || isBoth;
+    const showEn = isEn || isBoth;
 
     let tocHtml = '<div class="read-toc">';
     tocHtml += '<div class="read-toc-header">📑 فهرست مطالب<br><small>Table of Contents</small></div>';
