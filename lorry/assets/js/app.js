@@ -504,6 +504,12 @@
     if (filtered.length === 0) {
       grid.innerHTML = '<p style="text-align:center;color:#888;padding:20px">نتیجه‌ای یافت نشد / No results found</p>';
     }
+
+    // Creator credit
+    const credit = document.createElement('div');
+    credit.style.cssText = 'text-align:center;padding:24px 16px 8px;font-size:12px;color:#aaa;font-style:italic;';
+    credit.textContent = 'Crafted by Nima Hakimmaani';
+    grid.appendChild(credit);
   }
 
   // =============================================
