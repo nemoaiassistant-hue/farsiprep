@@ -1,6 +1,13 @@
 const HAZARD_SCENARIOS = (() => {
+  const IMG = {
+    1:'hazard-01.png', 2:'hazard-17.png', 3:'hazard-04.png', 4:'hazard-06.png',
+    5:'hazard-13.png', 6:'hazard-14.png', 7:'hazard-new-07.png', 8:'hazard-12.png',
+    9:'hazard-new-09.png', 10:'hazard-15.png', 11:'hazard-10.png', 12:'hazard-02.png',
+    13:'hazard-new-13.png', 14:'hazard-09.png', 15:'hazard-new-15.png', 16:'hazard-07.png',
+    17:'hazard-new-17.png', 18:'hazard-08.png', 19:'hazard-16.png', 20:'hazard-new-20.png'
+  };
   const make = (id, type, category, difficulty, sceneFa, sceneEn, correctFa, correctEn, distractors, whyFa, whyEn, tipFa, tipEn) => ({
-    id, type, category, sceneFa, sceneEn, image: `assets/img/hazards/hazard-${String(id).padStart(2, "0")}.png`,
+    id, type, category, sceneFa, sceneEn, image: `assets/img/hazards/${IMG[id]}`,
     options: [
       { id: "a", textFa: correctFa, textEn: correctEn },
       ...distractors.map((d, i) => ({ id: ["b", "c", "d"][i], textFa: d[0], textEn: d[1] }))
