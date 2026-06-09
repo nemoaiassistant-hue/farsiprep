@@ -125,6 +125,7 @@ const RULES = {
         ],
         answer: 'B',
         explanation: 'اگر پیاده‌رو نباشد، باید از سمت راست بروید (سمت مقابل ترافیک) تا ماشین‌های روبرو را ببینید. // If there is no pavement, walk on the right so you can see oncoming traffic.',
+        difficulty: 'medium',
       },
       {
         q: 'در تقاطع پلهانی (pelican crossing) چراغ زرد چشمک‌زن یعنی چه؟',
@@ -136,6 +137,7 @@ const RULES = {
         ],
         answer: 'B',
         explanation: 'چراغ زرد چشمک‌زن = شروع به راه رفتن ممنوع. منتظر چراغ سبز بعدی بمانید. // Flashing amber = do NOT start crossing. Wait for the next green man.',
+        difficulty: 'medium',
       },
       {
         q: 'حداکثر مجاز الکل خون برای رانندگی چقدر است؟',
@@ -147,6 +149,7 @@ const RULES = {
         ],
         answer: 'A',
         explanation: 'حداکثر ۸۰ میلی‌گرم در ۱۰۰ میلی‌لیتر خون (یا ۳۵ میکروگرم در نفس). // Maximum 80mg per 100ml blood (or 35 micrograms per 100ml breath). Scotland has a LOWER limit of 50mg/100ml.',
+        difficulty: 'hard',
       },
       {
         q: 'کودکان زیر چند سال نباید به تنهایی از خیابان عبور کنند؟',
@@ -158,6 +161,7 @@ const RULES = {
         ],
         answer: 'B',
         explanation: 'کودکان زیر ۷ سال نباید به تنهایی از خیابان عبور کنند. // Children under 7 should never cross the road alone.',
+        difficulty: 'easy',
       },
     ],
   },
@@ -297,6 +301,7 @@ const RULES = {
         ],
         answer: 'B',
         explanation: 'در بریتانیا همیشه در سمت چپ برانید. // Always drive on the LEFT in the UK.',
+        difficulty: 'easy',
       },
       {
         q: 'حداکثر سرعت در مناطق مسکونی چقدر است؟',
@@ -308,6 +313,7 @@ const RULES = {
         ],
         answer: 'B',
         explanation: 'حداکثر سرعت در مناطق مسکونی ۳۰ مایل بر ساعت (mph) است. // Speed limit in built-up areas is 30 mph. Some areas have 20 mph zones.',
+        difficulty: 'easy',
       },
       {
         q: 'جریمه استفاده از تلفن هنگام رانندگی چقدر است؟',
@@ -319,6 +325,7 @@ const RULES = {
         ],
         answer: 'B',
         explanation: 'جریمه: £۲۰۰ و ۶ امتیاز منفی در گواهینامه. // Penalty: £200 fine and 6 penalty points on your licence.',
+        difficulty: 'medium',
       },
       {
         q: 'وقتی آمبولانس با آژیر و چراغ آبی می‌آید، چه باید کرد؟',
@@ -330,7 +337,11 @@ const RULES = {
         ],
         answer: 'C',
         explanation: 'به سمت راست بروید و توقف کنید. بلوکه کردن راه خودروی اضطراری = جرم. // Pull over and stop. Blocking an emergency vehicle is an offence.',
+        difficulty: 'medium',
       },
+      { q: 'حداقل سطح بیمه لازم برای رانندگی قانونی در جاده عمومی چیست؟', qEn: 'What is the minimum insurance cover required to drive legally on a public road?', options: [{ letter: 'A', fa: 'بیمه شخص ثالث', en: 'Third-party insurance' }, { letter: 'B', fa: 'بیمه جامع', en: 'Comprehensive insurance' }, { letter: 'C', fa: 'بیمه خرابی خودرو', en: 'Breakdown cover' }], answer: 'A', explanation: 'حداقل پوشش قانونی، بیمه شخص ثالث است. // Third-party insurance is the minimum legal cover.', difficulty: 'medium' },
+      { q: 'در بریتانیای کبیر، خودروی سواری جدید معمولاً چه زمانی به اولین MOT نیاز دارد؟', qEn: 'In Great Britain, when does a new car normally need its first MOT?', options: [{ letter: 'A', fa: 'پس از یک سال', en: 'After one year' }, { letter: 'B', fa: 'تا سومین سالگرد ثبت خودرو', en: 'By the third anniversary of registration' }, { letter: 'C', fa: 'پس از پنج سال', en: 'After five years' }], answer: 'B', explanation: 'بیشتر خودروها تا سومین سالگرد ثبت به اولین MOT نیاز دارند و سپس سالانه آزمایش می‌شوند. // Most cars need their first MOT by the third anniversary of registration, then annually.', difficulty: 'medium' },
+      { q: 'برای خودرویی که SORN اعلام شده کدام کار مجاز است؟', qEn: 'What is permitted for a vehicle declared SORN?', options: [{ letter: 'A', fa: 'پارک‌کردن آن در جاده عمومی', en: 'Keeping it parked on a public road' }, { letter: 'B', fa: 'استفاده روزانه بدون مالیات', en: 'Using it daily without tax' }, { letter: 'C', fa: 'نگهداری آن خارج از جاده عمومی', en: 'Keeping it off the public road' }], answer: 'C', explanation: 'خودروی SORN باید خارج از جاده عمومی نگهداری شود و معمولاً نباید در جاده عمومی رانده شود. // A SORN vehicle must be kept off the public road and normally must not be driven there.', difficulty: 'hard' },
     ],
   },
 
@@ -435,6 +446,7 @@ const RULES = {
         ],
         answer: 'B',
         explanation: 'قانون بریتانیا: اولویت با سمت راست. // UK rule: give way to the right.',
+        difficulty: 'medium',
       },
       {
         q: 'box junction مربع زرد چه معنایی دارد؟',
@@ -446,6 +458,7 @@ const RULES = {
         ],
         answer: 'B',
         explanation: 'فقط وقتی وارد شوید که خروجی شما خالی باشد. توقف داخل = جریمه. // Only enter if your exit is clear.',
+        difficulty: 'hard',
       },
       {
         q: 'هنگام چرخش به چپ در چهارراه، به چه کسی باید مراقب باشید؟',
@@ -457,6 +470,7 @@ const RULES = {
         ],
         answer: 'C',
         explanation: 'همیشه مراقب عابران و دوچرخه‌سواران در سمت چپ باشید. // Always watch for pedestrians and cyclists on your left.',
+        difficulty: 'medium',
       },
     ],
   },
@@ -534,6 +548,7 @@ const RULES = {
         ],
         answer: 'B',
         explanation: 'ترافیک داخل میدان همیشه اولویت دارد. // Traffic already in the roundabout always has priority.',
+        difficulty: 'easy',
       },
       {
         q: 'وقتی می‌خواهید از خروج سوم خارج شوید، چه چراغ راهنمایی می‌زنید؟',
@@ -545,6 +560,7 @@ const RULES = {
         ],
         answer: 'B',
         explanation: 'هنگام ورود چراغ راست بزنید، و قبل از خروج چراغ چپ. // Signal right on entry, then left before your exit.',
+        difficulty: 'medium',
       },
       {
         q: 'هنگام ورود به میدان، به کدام سمت نگاه می‌کنید؟',
@@ -556,7 +572,9 @@ const RULES = {
         ],
         answer: 'B',
         explanation: 'به چپ نگاه کنید — ترافیک از آن سمت می‌آید. // Look LEFT — traffic comes from that direction in the UK.',
+        difficulty: 'easy',
       },
+      { q: 'در میدان، دوچرخه‌سواری در خط چپ مانده و به حرکت دور میدان ادامه می‌دهد. چه باید بکنید؟', qEn: 'A cyclist stays in the left lane while continuing around a roundabout. What should you do?', options: [{ letter: 'A', fa: 'با فاصله کافی پشت سر بمانید', en: 'Stay behind and allow plenty of room' }, { letter: 'B', fa: 'از داخل میدان جلوی او بپیچید', en: 'Cut across in front of them' }, { letter: 'C', fa: 'برای عبور بوق بزنید', en: 'Sound the horn to pass' }], answer: 'A', explanation: 'دوچرخه‌سوار ممکن است برای ایمنی در خط چپ بماند؛ فضای کافی بدهید و جلوی او نپیچید. // A cyclist may stay left for safety; give space and do not cut across them.', difficulty: 'medium' },
     ],
   },
 
@@ -675,6 +693,7 @@ const RULES = {
         ],
         answer: 'B',
         explanation: 'خط سفید پیوسته = ممنوع عبور. خط چمکزن = اجازه عبور اگر ایمن باشد. // Solid white line = do not cross. Dashed = may cross if safe.',
+        difficulty: 'medium',
       },
       {
         q: 'خطوط دوگانه سفید (هر دو پیوسته) در وسط جاده یعنی چه؟',
@@ -686,6 +705,7 @@ const RULES = {
         ],
         answer: 'A',
         explanation: 'خطوط دوگانه = تحت هیچ شرایطی عبور نکنید. // Double solid lines = never cross.',
+        difficulty: 'hard',
       },
       {
         q: 'از کدام سمت سبقت می‌گیرید؟',
@@ -697,7 +717,9 @@ const RULES = {
         ],
         answer: 'B',
         explanation: 'در بریتانیا همیشه از سمت راست سبقت بگیرید. استثنا: ماشین پارک شده و دوچرخه‌سوار. // Always overtake on the right in the UK.',
+        difficulty: 'easy',
       },
+      { q: 'هنگام یدک‌کشیدن تریلر در بزرگراه، کدام محدودیت‌ها معمولاً اعمال می‌شوند؟', qEn: 'When towing a trailer on a motorway, which restrictions normally apply?', options: [{ letter: 'A', fa: 'حداکثر ۶۰ mph و ممنوعیت خط راست در بزرگراه سه‌خطه یا بیشتر', en: 'Maximum 60 mph and no right-hand lane on a motorway with three or more lanes' }, { letter: 'B', fa: 'حداکثر ۷۰ mph و استفاده از هر خط', en: 'Maximum 70 mph and use of any lane' }, { letter: 'C', fa: 'حداکثر ۵۰ mph و فقط خط راست', en: 'Maximum 50 mph and right-hand lane only' }], answer: 'A', explanation: 'هنگام یدک‌کشیدن، حد بزرگراه معمولاً ۶۰ mph است و در بزرگراه سه‌خطه یا بیشتر نباید از خط راست استفاده کنید. // When towing, the motorway limit is normally 60 mph and you must not use the right-hand lane on a motorway with three or more lanes.', difficulty: 'hard' },
     ],
   },
 
@@ -802,6 +824,7 @@ const RULES = {
         ],
         answer: 'C',
         explanation: 'حداقل ۱.۵ متر فاصله. بیشتر بهتر. // At least 1.5 metres. More is better.',
+        difficulty: 'medium',
       },
       {
         q: 'Dutch reach چیست؟',
@@ -813,7 +836,9 @@ const RULES = {
         ],
         answer: 'B',
         explanation: 'باز کردن در ماشین با دست دور باعث می‌شود طبیعتاً شانه برگردانید و نقطه کور را چک کنید. // Opening with far hand makes you naturally look over your shoulder.',
+        difficulty: 'medium',
       },
+      { q: 'هنگام پیچیدن به خیابان فرعی، عابری منتظر عبور از دهانه خیابان است. چه باید بکنید؟', qEn: 'You are turning into a side road where a pedestrian is waiting to cross. What should you do?', options: [{ letter: 'A', fa: 'به عابر راه بدهید', en: 'Give way to the pedestrian' }, { letter: 'B', fa: 'سریع‌تر بپیچید', en: 'Turn more quickly' }, { letter: 'C', fa: 'فقط چراغ بزنید و ادامه دهید', en: 'Signal and continue' }], answer: 'A', explanation: 'هنگام پیچیدن به داخل یا خارج یک جاده باید به عابران در حال عبور یا منتظر عبور راه بدهید. // When turning into or out of a road, give way to pedestrians crossing or waiting to cross.', difficulty: 'medium' },
     ],
   },
 
@@ -904,6 +929,7 @@ const RULES = {
         ],
         answer: 'B',
         explanation: 'دایره قرمز با عدد = حداکثر سرعت مجاز. // Red circle with number = maximum speed limit.',
+        difficulty: 'easy',
       },
       {
         q: 'علائم مستطیلی قهوه‌ای برای چه هستند؟',
@@ -915,6 +941,7 @@ const RULES = {
         ],
         answer: 'B',
         explanation: 'قهوه‌ای = تفریحی و توریستی. // Brown = tourist and leisure.',
+        difficulty: 'easy',
       },
       {
         q: 'خطوط زرد دوتایی چه معنایی دارند؟',
@@ -926,6 +953,7 @@ const RULES = {
         ],
         answer: 'B',
         explanation: 'خط زرد دوتایی = هرگز توقف یا پارک ممنوع. // Double yellow lines = no stopping or parking at any time.',
+        difficulty: 'easy',
       },
       {
         q: 'اگر چراغ خیابان هست ولی تابلوی سرعت نیست، حداکثر سرعت چقدر است؟',
@@ -937,6 +965,7 @@ const RULES = {
         ],
         answer: 'B',
         explanation: 'چراغ خیابان بدون تابلوی سرعت = فرض کنید ۳۰ mph. // Street lights with no sign = assume 30 mph.',
+        difficulty: 'easy',
       },
     ],
   },
@@ -1028,6 +1057,7 @@ const RULES = {
         ],
         answer: 'B',
         explanation: 'قرمز + زرد = آماده بمانید اما حرکت نکنید. // Red + amber = get ready but don\'t move.',
+        difficulty: 'easy',
       },
       {
         q: 'چراغ زرد تنها یعنی چه؟',
@@ -1039,6 +1069,7 @@ const RULES = {
         ],
         answer: 'B',
         explanation: 'زرد = توقف مگر اینکه نزدیک هستید. // Amber = stop unless too close.',
+        difficulty: 'medium',
       },
       {
         q: 'چراغ قرمز X روی لاین بزرگراه هوشمند یعنی چه؟',
@@ -1050,7 +1081,9 @@ const RULES = {
         ],
         answer: 'B',
         explanation: 'قرمز X = لاین بسته. فوراً خارج شوید. // Red X = lane closed. Exit immediately.',
+        difficulty: 'easy',
       },
+      { q: 'چراغ سبز است اما خروجی تقاطع مسدود است. چه باید بکنید؟', qEn: 'The traffic light is green but the junction exit is blocked. What should you do?', options: [{ letter: 'A', fa: 'وارد شوید و وسط تقاطع منتظر بمانید', en: 'Enter and wait in the junction' }, { letter: 'B', fa: 'تا بازشدن خروجی پشت خط منتظر بمانید', en: 'Wait behind the line until the exit is clear' }, { letter: 'C', fa: 'بوق بزنید و وارد شوید', en: 'Sound the horn and enter' }], answer: 'B', explanation: 'چراغ سبز فقط در صورت بازبودن مسیر اجازه حرکت می‌دهد؛ تقاطع را مسدود نکنید. // A green light permits you to proceed only when the way is clear; do not block the junction.', difficulty: 'medium' },
     ],
   },
 
@@ -1141,6 +1174,7 @@ const RULES = {
         ],
         answer: 'B',
         explanation: 'حداکثر ۷۰ mph برای ماشین سواری. // Maximum 70 mph for cars.',
+        difficulty: 'easy',
       },
       {
         q: 'از کدام سمت ماشین در بزرگراه خارج شوید؟',
@@ -1152,6 +1186,7 @@ const RULES = {
         ],
         answer: 'B',
         explanation: 'همیشه از سمت چپ (دور از ترافیک) خارج شوید. // Always exit from the LEFT (away from traffic).',
+        difficulty: 'medium',
       },
       {
         q: 'لاین چپ در بزرگراه برای چه است؟',
@@ -1163,7 +1198,9 @@ const RULES = {
         ],
         answer: 'B',
         explanation: 'لاین چپ = لاین سفر. لاین‌های دیگر فقط برای سبقت. // Left lane = cruising. Other lanes = overtaking only.',
+        difficulty: 'medium',
       },
+      { q: 'خروجی بزرگراه خود را رد کرده‌اید. چه باید بکنید؟', qEn: 'You have missed your motorway exit. What should you do?', options: [{ letter: 'A', fa: 'دنده‌عقب بروید', en: 'Reverse back' }, { letter: 'B', fa: 'روی شانه سخت دور بزنید', en: 'Turn around on the hard shoulder' }, { letter: 'C', fa: 'تا خروجی بعدی ادامه دهید', en: 'Continue to the next exit' }], answer: 'C', explanation: 'هرگز در بزرگراه دنده‌عقب نروید یا دور نزنید؛ از خروجی بعدی استفاده کنید. // Never reverse or turn around on a motorway; continue to the next exit.', difficulty: 'medium' },
     ],
   },
 
@@ -1254,6 +1291,7 @@ const RULES = {
         ],
         answer: 'B',
         explanation: 'جلو = سفید، عقب = قرمز. // Front = white, rear = red.',
+        difficulty: 'easy',
       },
       {
         q: 'آیا استفاده از مسیر دوچرخه اجباری است؟',
@@ -1265,6 +1303,7 @@ const RULES = {
         ],
         answer: 'B',
         explanation: 'مسیر دوچرخه اختیاری است. می‌توانید در جاده رانید. // Cycle lanes are optional.',
+        difficulty: 'medium',
       },
       {
         q: 'آیا بزرگسالان مجاز به رانیدن در پیاده‌رو هستند؟',
@@ -1276,6 +1315,7 @@ const RULES = {
         ],
         answer: 'B',
         explanation: 'فقط اگر مسیر مشترک (shared use) مشخص شده باشد. // Only if shared use path is marked.',
+        difficulty: 'medium',
       },
     ],
   },
@@ -1353,6 +1393,7 @@ const RULES = {
         ],
         answer: 'B',
         explanation: 'CBT = آموزش پایه اجباری. قدم اول برای همه مبتدیان. // CBT = compulsory basic training.',
+        difficulty: 'medium',
       },
       {
         q: 'چرا موتورسواران باید لباس روشن بپوشند؟',
@@ -1364,6 +1405,7 @@ const RULES = {
         ],
         answer: 'B',
         explanation: 'موتورسواران سخت دیده می‌شوند. لباس روشن = بهتر دیده شوید. // Riders are hard to see. Bright gear = visibility.',
+        difficulty: 'easy',
       },
       {
         q: 'ترمز موتور را کی بگیرید در پیچ؟',
@@ -1375,6 +1417,7 @@ const RULES = {
         ],
         answer: 'A',
         explanation: 'ترمز قبل از پیچ، داخل پیچ سرعت ثابت، بعد شتاب. // Brake before, steady through, accelerate after.',
+        difficulty: 'hard',
       },
     ],
   },
@@ -1452,6 +1495,7 @@ const RULES = {
         ],
         answer: 'B',
         explanation: 'خط زرد دوتایی = هرگز توقف یا پارک. // Double yellow = never stop or park.',
+        difficulty: 'easy',
       },
       {
         q: 'خط قرمز دوتایی چه فرقی با زرد دارد؟',
@@ -1463,6 +1507,7 @@ const RULES = {
         ],
         answer: 'B',
         explanation: 'قرمز = سخت‌تر از زرد. بارگیری هم ممنوع. // Red = stricter. Even loading is banned.',
+        difficulty: 'hard',
       },
       {
         q: 'در شب، ماشین را چگونه پارک کنید؟',
@@ -1474,7 +1519,10 @@ const RULES = {
         ],
         answer: 'A',
         explanation: 'در جهت ترافیک، چراغ خاموش، ترمز دستی کشیده. // In traffic direction, lights off, handbrake on.',
+        difficulty: 'medium',
       },
+      { q: 'شب در جاده‌ای با محدودیت بیش از ۳۰ مایل بر ساعت پارک کرده‌اید. چه چراغی باید روشن بماند؟', qEn: 'You park at night on a road with a speed limit above 30 mph. Which lights must remain on?', options: [{ letter: 'A', fa: 'چراغ‌های پارک', en: 'Parking lights' }, { letter: 'B', fa: 'نوربالا', en: 'Main-beam headlights' }, { letter: 'C', fa: 'چراغ خطر', en: 'Hazard warning lights' }], answer: 'A', explanation: 'هنگام پارک شبانه در جاده‌ای با محدودیت بیش از ۳۰ mph باید چراغ‌های پارک روشن باشند. // Parking lights must be displayed when parked at night on a road with a limit above 30 mph.', difficulty: 'hard' },
+      { q: 'معمولاً نباید در چه فاصله‌ای از تقاطع پارک کنید؟', qEn: 'How close to a junction should you normally avoid parking?', options: [{ letter: 'A', fa: 'در فاصله ۱۰ متر، مگر در محل مجاز', en: 'Within 10 metres, unless in an authorised space' }, { letter: 'B', fa: 'در فاصله ۲ متر', en: 'Within 2 metres' }, { letter: 'C', fa: 'در فاصله ۵۰ متر', en: 'Within 50 metres' }], answer: 'A', explanation: 'معمولاً نباید در فاصله ۱۰ متر از تقاطع پارک کنید، مگر در محل مجاز. // You should not normally park within 10 metres of a junction, except in an authorised space.', difficulty: 'hard' },
     ],
   },
 
@@ -1551,6 +1599,7 @@ const RULES = {
         ],
         answer: 'B',
         explanation: 'فقط وقتی دید کمتر از ۱۰۰ متر (حدود طول یک زمین فوتبال). // Only when visibility < 100m.',
+        difficulty: 'medium',
       },
       {
         q: 'چراغ تمام‌نور را کِی خاموش می‌کنید؟',
@@ -1562,6 +1611,7 @@ const RULES = {
         ],
         answer: 'A',
         explanation: 'وقتی ماشین مقابل آمد = فوراً کم‌نور. همچنین در شهر. // Switch to dipped when vehicles approach or in town.',
+        difficulty: 'medium',
       },
       {
         q: 'چراغ خطر را چه موقع استفاده می‌کنید؟',
@@ -1573,7 +1623,9 @@ const RULES = {
         ],
         answer: 'C',
         explanation: 'فقط اضطرار: خرابی، ترمز ناگهانی، حرکت کند در بزرگراه. // Emergency only: breakdown, sudden stop, slow on motorway.',
+        difficulty: 'easy',
       },
+      { q: 'هنگام رانندگی در شب، سرعت را چگونه انتخاب می‌کنید؟', qEn: 'How should you choose your speed when driving at night?', options: [{ letter: 'A', fa: 'طوری که در فاصله قابل‌دید و روشن توقف کنید', en: 'So you can stop within the distance you can see to be clear' }, { letter: 'B', fa: 'همیشه دقیقاً با حداکثر سرعت', en: 'Always exactly at the speed limit' }, { letter: 'C', fa: 'بر اساس سرعت خودروی پشت سر', en: 'According to the vehicle behind' }], answer: 'A', explanation: 'باید بتوانید در فاصله‌ای که روشن و قابل‌دید است توقف کنید. // You must be able to stop within the distance you can see to be clear.', difficulty: 'medium' },
     ],
   },
 
@@ -1650,6 +1702,7 @@ const RULES = {
         ],
         answer: 'C',
         explanation: 'مه = فاصله ۳ برابر. باران = ۲ برابر. برف/یخ = ۱۰ برابر. // Fog = 3×. Rain = 2×. Snow/ice = 10×.',
+        difficulty: 'medium',
       },
       {
         q: 'حداقل عمق آج لاستیک چقدر است؟',
@@ -1661,6 +1714,7 @@ const RULES = {
         ],
         answer: 'B',
         explanation: 'حداقل قانونی ۱.۶ میلی‌متر. در زمستان، لاستیک زمستانی توصیه می‌شود. // Legal minimum = 1.6mm.',
+        difficulty: 'hard',
       },
       {
         q: 'آیا باید از آب عمیق عبور کنید؟',
@@ -1672,7 +1726,9 @@ const RULES = {
         ],
         answer: 'B',
         explanation: '۳۰ سانتی‌متر آب کافی است تا ماشین را از کار بیندازد. هرگز عبور نکنید. // 30cm can stall your car. Never drive through.',
+        difficulty: 'hard',
       },
+      { q: 'در یخ و برف، فاصله توقف ممکن است نسبت به جاده خشک چقدر بیشتر شود؟', qEn: 'In ice and snow, how much greater can stopping distances be than on a dry road?', options: [{ letter: 'A', fa: 'تا دو برابر', en: 'Up to twice' }, { letter: 'B', fa: 'تا پنج برابر', en: 'Up to five times' }, { letter: 'C', fa: 'تا ده برابر', en: 'Up to ten times' }], answer: 'C', explanation: 'در یخ و برف فاصله توقف ممکن است تا ده برابر جاده خشک شود. // In ice and snow, stopping distances can be up to ten times greater than on a dry road.', difficulty: 'medium' },
     ],
   },
 
@@ -1749,6 +1805,7 @@ const RULES = {
         ],
         answer: 'B',
         explanation: 'همیشه سمت چپ = دور از ترافیک. // Always LEFT = away from traffic.',
+        difficulty: 'medium',
       },
       {
         q: 'مثلث هشدار را کجا قرار دهید؟',
@@ -1760,6 +1817,7 @@ const RULES = {
         ],
         answer: 'B',
         explanation: 'حداقل ۴۵ متر پشت، فقط در جاده‌های معمولی. در بزرگراه روی جاده نگذارید. // At least 45m behind, normal roads only. Not on motorway carriageway.',
+        difficulty: 'hard',
       },
       {
         q: 'شماره اضطراری بریتانیا چیست؟',
@@ -1771,6 +1829,7 @@ const RULES = {
         ],
         answer: 'B',
         explanation: '۹۹۹ = شماره اضطراری بریتانیا (پلیس، آتش‌نشانی، آمبولانس). ۱۱۲ هم کار می‌کند. // 999 = UK emergency (police, fire, ambulance). 112 also works.',
+        difficulty: 'easy',
       },
     ],
   },

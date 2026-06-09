@@ -22,7 +22,7 @@ const r = (num, fa, en, tipFa = null, tipEn = null, warningFa = null, warningEn 
   num, fa, en, tipFa, tipEn, warningFa, warningEn,
 });
 
-const q = (fa, en, choices, answer, explanation) => ({
+const q = (fa, en, choices, answer, explanation, difficulty) => ({
   q: fa,
   qEn: en,
   options: choices.map((choice, index) => ({
@@ -30,6 +30,7 @@ const q = (fa, en, choices, answer, explanation) => ({
   })),
   answer,
   explanation,
+  difficulty,
 });
 
 const RULES = {
@@ -47,10 +48,10 @@ const RULES = {
       r(8, 'راننده مسئول است مطمئن شود وسیله در تمام سفر ایمن می‌ماند؛ پس از توقف یا تعویض راننده دوباره بررسی کنید.', 'The driver remains responsible for roadworthiness throughout the journey; recheck after stops or a change of driver.'),
     ],
     quiz: [
-      q('حداقل عمق آج بیشتر لاستیک‌های وسیله بزرگ چقدر است؟', 'What is the minimum tread depth for most large-vehicle tyres?', [['۱ میلی‌متر', '1 mm'], ['۱٫۶ میلی‌متر', '1.6 mm'], ['۳ میلی‌متر', '3 mm']], 'A', 'حداقل معمول ۱ میلی‌متر در سه‌چهارم مرکزی است. // Normally 1 mm across the central three-quarters.'),
-      q('اگر هشدار فشار هوای ترمز روشن بماند چه می‌کنید؟', 'What should you do if the brake air-pressure warning stays on?', [['آرام حرکت کنید', 'Drive slowly'], ['حرکت نکنید و عیب را رفع کنید', 'Do not move; have the defect fixed'], ['فقط ترمز دستی را امتحان کنید', 'Only test the parking brake']], 'B', 'با فشار هوای ناکافی حرکت نکنید. // Do not move with insufficient air pressure.'),
-      q('پس از اتصال تریلر چه آزمونی مفید است؟', 'Which test is useful after coupling a trailer?', [['آزمون کشش', 'Tug test'], ['آزمون بوق', 'Horn test'], ['آزمون سرعت', 'Speed test']], 'A', 'آزمون کشش تأیید می‌کند قفل اتصال درگیر است. // A tug test helps confirm the coupling is locked.'),
-      q('چه کسی طی سفر مسئول ایمن‌بودن وسیله است؟', 'Who is responsible for the vehicle remaining safe during the journey?', [['فقط مالک', 'Only the owner'], ['فقط تعمیرکار', 'Only the mechanic'], ['راننده و بهره‌بردار', 'The driver and operator']], 'C', 'راننده و بهره‌بردار هر دو مسئولیت دارند. // Both driver and operator have responsibilities.'),
+      q('حداقل عمق آج بیشتر لاستیک‌های وسیله بزرگ چقدر است؟', 'What is the minimum tread depth for most large-vehicle tyres?', [['۱ میلی‌متر', '1 mm'], ['۱٫۶ میلی‌متر', '1.6 mm'], ['۳ میلی‌متر', '3 mm']], 'A', 'حداقل معمول ۱ میلی‌متر در سه‌چهارم مرکزی است. // Normally 1 mm across the central three-quarters.', 'medium'),
+      q('اگر هشدار فشار هوای ترمز روشن بماند چه می‌کنید؟', 'What should you do if the brake air-pressure warning stays on?', [['آرام حرکت کنید', 'Drive slowly'], ['حرکت نکنید و عیب را رفع کنید', 'Do not move; have the defect fixed'], ['فقط ترمز دستی را امتحان کنید', 'Only test the parking brake']], 'B', 'با فشار هوای ناکافی حرکت نکنید. // Do not move with insufficient air pressure.', 'medium'),
+      q('پس از اتصال تریلر چه آزمونی مفید است؟', 'Which test is useful after coupling a trailer?', [['آزمون کشش', 'Tug test'], ['آزمون بوق', 'Horn test'], ['آزمون سرعت', 'Speed test']], 'A', 'آزمون کشش تأیید می‌کند قفل اتصال درگیر است. // A tug test helps confirm the coupling is locked.', 'medium'),
+      q('چه کسی طی سفر مسئول ایمن‌بودن وسیله است؟', 'Who is responsible for the vehicle remaining safe during the journey?', [['فقط مالک', 'Only the owner'], ['فقط تعمیرکار', 'Only the mechanic'], ['راننده و بهره‌بردار', 'The driver and operator']], 'C', 'راننده و بهره‌بردار هر دو مسئولیت دارند. // Both driver and operator have responsibilities.', 'medium'),
     ],
   },
 
@@ -68,10 +69,10 @@ const RULES = {
       r(16, 'در PCV، بار و چمدان را طوری قرار دهید که راهرو، خروج اضطراری و دسترسی مسافران مسدود نشود.', 'On a PCV, stow luggage so aisles, emergency exits and passenger access remain clear.'),
     ],
     quiz: [
-      q('بهترین محل برای بار سنگین کجاست؟', 'Where is the best place for a heavy load?', [['بالا و عقب', 'High and rearward'], ['پایین و نزدیک مرکز', 'Low and near the centre'], ['فقط روی یک محور', 'On one axle only']], 'B', 'مرکز ثقل پایین‌تر پایداری را بهتر می‌کند. // A lower centre of gravity improves stability.'),
-      q('آیا پرده جانبی به‌تنهایی مهار بار است؟', 'Is a curtain side alone adequate load restraint?', [['بله', 'Yes'], ['فقط در شهر', 'Only in towns'], ['خیر', 'No']], 'C', 'پرده یا پوشش جای مهار مناسب را نمی‌گیرد. // Curtains and sheets do not replace proper restraint.'),
-      q('مهار بار چه زمانی دوباره بررسی شود؟', 'When should load security be rechecked?', [['فقط پایان سفر', 'Only at journey end'], ['پس از حرکت و در فواصل مناسب', 'Soon after setting off and periodically'], ['فقط هنگام باران', 'Only in rain']], 'B', 'بار ممکن است پس از حرکت جا بیفتد و تسمه‌ها شل شوند. // Loads can settle and restraints loosen.'),
-      q('در اتوبوس، چمدان نباید چه چیزی را مسدود کند؟', 'On a bus, luggage must not obstruct what?', [['خروج اضطراری', 'Emergency exits'], ['رادیو', 'Radio'], ['نمای بیرونی بدنه', 'Exterior paintwork']], 'A', 'خروج‌ها و راهروها باید باز بمانند. // Exits and aisles must remain clear.'),
+      q('بهترین محل برای بار سنگین کجاست؟', 'Where is the best place for a heavy load?', [['بالا و عقب', 'High and rearward'], ['پایین و نزدیک مرکز', 'Low and near the centre'], ['فقط روی یک محور', 'On one axle only']], 'B', 'مرکز ثقل پایین‌تر پایداری را بهتر می‌کند. // A lower centre of gravity improves stability.', 'medium'),
+      q('آیا پرده جانبی به‌تنهایی مهار بار است؟', 'Is a curtain side alone adequate load restraint?', [['بله', 'Yes'], ['فقط در شهر', 'Only in towns'], ['خیر', 'No']], 'C', 'پرده یا پوشش جای مهار مناسب را نمی‌گیرد. // Curtains and sheets do not replace proper restraint.', 'easy'),
+      q('مهار بار چه زمانی دوباره بررسی شود؟', 'When should load security be rechecked?', [['فقط پایان سفر', 'Only at journey end'], ['پس از حرکت و در فواصل مناسب', 'Soon after setting off and periodically'], ['فقط هنگام باران', 'Only in rain']], 'B', 'بار ممکن است پس از حرکت جا بیفتد و تسمه‌ها شل شوند. // Loads can settle and restraints loosen.', 'medium'),
+      q('در اتوبوس، چمدان نباید چه چیزی را مسدود کند؟', 'On a bus, luggage must not obstruct what?', [['خروج اضطراری', 'Emergency exits'], ['رادیو', 'Radio'], ['نمای بیرونی بدنه', 'Exterior paintwork']], 'A', 'خروج‌ها و راهروها باید باز بمانند. // Exits and aisles must remain clear.', 'easy'),
     ],
   },
 
@@ -89,10 +90,10 @@ const RULES = {
       r(24, 'اضافه‌بار ترمز و فرمان را بدتر، لاستیک‌ها را داغ و وسیله را ناپایدار می‌کند؛ وزن را با باسکول معتبر کنترل کنید.', 'Overloading harms braking and steering, overheats tyres and reduces stability; use a suitable weighbridge when needed.'),
     ],
     quiz: [
-      q('وزن مجاز ناخالص شامل چیست؟', 'What does gross vehicle weight include?', [['فقط بار', 'Load only'], ['وسیله و همه محتویات آن', 'Vehicle and everything carried'], ['فقط وسیله خالی', 'Empty vehicle only']], 'B', 'راننده، سوخت، مسافر و بار همگی جزو وزن ناخالص‌اند. // Driver, fuel, passengers and load all count.'),
-      q('حداکثر عرض معمول وسیله چقدر است؟', 'What is the normal maximum vehicle width?', [['۲٫۵۵ متر', '2.55 metres'], ['۳ متر', '3 metres'], ['۴٫۴ متر', '4.4 metres']], 'A', 'عرض معمول حداکثر ۲٫۵۵ متر است. // The normal maximum width is 2.55 metres.'),
-      q('اعلان ارتفاع کابین معمولاً از چه ارتفاعی لازم است؟', 'When is an in-cab height notice normally required?', [['بیش از ۲ متر', 'Over 2 metres'], ['بیش از ۳ متر', 'Over 3 metres'], ['بیش از ۵ متر', 'Over 5 metres']], 'B', 'برای ارتفاع کلی بیش از ۳ متر اعلان کابین لازم است. // It is required when overall height exceeds 3 metres.'),
-      q('حداکثر معمول بسیاری از ترکیب‌های شش‌محوره واجد شرایط چیست؟', 'What is the normal maximum for many qualifying six-axle combinations?', [['۳۲ تن', '32 tonnes'], ['۴۰ تن', '40 tonnes'], ['۴۴ تن', '44 tonnes']], 'C', 'در صورت رعایت شرایط، ۴۴ تن. // 44 tonnes where all conditions are met.'),
+      q('وزن مجاز ناخالص شامل چیست؟', 'What does gross vehicle weight include?', [['فقط بار', 'Load only'], ['وسیله و همه محتویات آن', 'Vehicle and everything carried'], ['فقط وسیله خالی', 'Empty vehicle only']], 'B', 'راننده، سوخت، مسافر و بار همگی جزو وزن ناخالص‌اند. // Driver, fuel, passengers and load all count.', 'medium'),
+      q('حداکثر عرض معمول وسیله چقدر است؟', 'What is the normal maximum vehicle width?', [['۲٫۵۵ متر', '2.55 metres'], ['۳ متر', '3 metres'], ['۴٫۴ متر', '4.4 metres']], 'A', 'عرض معمول حداکثر ۲٫۵۵ متر است. // The normal maximum width is 2.55 metres.', 'medium'),
+      q('اعلان ارتفاع کابین معمولاً از چه ارتفاعی لازم است؟', 'When is an in-cab height notice normally required?', [['بیش از ۲ متر', 'Over 2 metres'], ['بیش از ۳ متر', 'Over 3 metres'], ['بیش از ۵ متر', 'Over 5 metres']], 'B', 'برای ارتفاع کلی بیش از ۳ متر اعلان کابین لازم است. // It is required when overall height exceeds 3 metres.', 'medium'),
+      q('حداکثر معمول بسیاری از ترکیب‌های شش‌محوره واجد شرایط چیست؟', 'What is the normal maximum for many qualifying six-axle combinations?', [['۳۲ تن', '32 tonnes'], ['۴۰ تن', '40 tonnes'], ['۴۴ تن', '44 tonnes']], 'C', 'در صورت رعایت شرایط، ۴۴ تن. // 44 tonnes where all conditions are met.', 'medium'),
     ],
   },
 
@@ -110,9 +111,9 @@ const RULES = {
       r(32, 'دستکاری تاخوگراف، استفاده از کارت دیگری یا ثبت استراحت هنگام انجام کار، جرم جدی است.', 'Tampering with a tachograph, using another person’s card or recording rest while working is a serious offence.'),
     ],
     quiz: [
-      q('پس از حداکثر چند ساعت رانندگی، ۴۵ دقیقه استراحت لازم است؟', 'After no more than how much driving is a 45-minute break required?', [['۴ ساعت', '4 hours'], ['۴٫۵ ساعت', '4.5 hours'], ['۶ ساعت', '6 hours']], 'B', 'حداکثر دوره رانندگی پیش از استراحت ۴٫۵ ساعت است. // The maximum driving spell before the break is 4.5 hours.'),
-      q('استراحت ۴۵ دقیقه‌ای چگونه قابل تقسیم است؟', 'How may the 45-minute break be split?', [['۳۰ سپس ۱۵', '30 then 15'], ['۱۵ سپس ۳۰', '15 then 30'], ['سه بخش ۱۵ دقیقه‌ای', 'Three 15-minute parts']], 'B', 'ترتیب قانونی ۱۵ دقیقه و سپس ۳۰ دقیقه است. // The permitted order is 15 minutes followed by 30.'),
-      q('حد رانندگی در دو هفته متوالی چقدر است؟', 'What is the two-consecutive-week driving limit?', [['۸۰ ساعت', '80 hours'], ['۹۰ ساعت', '90 hours'], ['۱۱۲ ساعت', '112 hours']], 'B', 'مجموع دو هفته متوالی نباید از ۹۰ ساعت بیشتر شود. // The total must not exceed 90 hours.'),
+      q('پس از حداکثر چند ساعت رانندگی، ۴۵ دقیقه استراحت لازم است؟', 'After no more than how much driving is a 45-minute break required?', [['۴ ساعت', '4 hours'], ['۴٫۵ ساعت', '4.5 hours'], ['۶ ساعت', '6 hours']], 'B', 'حداکثر دوره رانندگی پیش از استراحت ۴٫۵ ساعت است. // The maximum driving spell before the break is 4.5 hours.', 'hard'),
+      q('استراحت ۴۵ دقیقه‌ای چگونه قابل تقسیم است؟', 'How may the 45-minute break be split?', [['۳۰ سپس ۱۵', '30 then 15'], ['۱۵ سپس ۳۰', '15 then 30'], ['سه بخش ۱۵ دقیقه‌ای', 'Three 15-minute parts']], 'B', 'ترتیب قانونی ۱۵ دقیقه و سپس ۳۰ دقیقه است. // The permitted order is 15 minutes followed by 30.', 'hard'),
+      q('حد رانندگی در دو هفته متوالی چقدر است؟', 'What is the two-consecutive-week driving limit?', [['۸۰ ساعت', '80 hours'], ['۹۰ ساعت', '90 hours'], ['۱۱۲ ساعت', '112 hours']], 'B', 'مجموع دو هفته متوالی نباید از ۹۰ ساعت بیشتر شود. // The total must not exceed 90 hours.', 'hard'),
     ],
   },
 
@@ -130,9 +131,9 @@ const RULES = {
       r(40, 'تابلوی محدودیت پایین‌تر، کار جاده‌ای و محدودیت محلی همیشه بر حد ملی مقدم است.', 'A lower signed, roadworks or local limit always overrides the national limit.'),
     ],
     quiz: [
-      q('حد معمول HGV بیش از ۷٫۵ تن در تک‌مسیره انگلستان و ولز چیست؟', 'What is the normal limit for an HGV over 7.5 tonnes on an England/Wales single carriageway?', [['۴۰ mph', '40 mph'], ['۵۰ mph', '50 mph'], ['۶۰ mph', '60 mph']], 'B', 'حد معمول ۵۰ mph است؛ در اسکاتلند معمولاً ۴۰ mph. // Normally 50 mph; Scotland is normally 40 mph.'),
-      q('حد معمول آن وسیله در بزرگراه چیست؟', 'What is its normal motorway limit?', [['۵۰ mph', '50 mph'], ['۶۰ mph', '60 mph'], ['۷۰ mph', '70 mph']], 'B', 'برای HGV بیش از ۷٫۵ تن معمولاً ۶۰ mph است. // It is normally 60 mph.'),
-      q('آیا محدودکننده سرعت در سرازیری سرعت را تضمین می‌کند؟', 'Does a speed limiter guarantee speed downhill?', [['بله', 'Yes'], ['خیر', 'No'], ['فقط در باران', 'Only in rain']], 'B', 'راننده باید با ترمز و دنده سرعت را کنترل کند. // The driver must control speed with braking and gearing.'),
+      q('حد معمول HGV بیش از ۷٫۵ تن در تک‌مسیره انگلستان و ولز چیست؟', 'What is the normal limit for an HGV over 7.5 tonnes on an England/Wales single carriageway?', [['۴۰ mph', '40 mph'], ['۵۰ mph', '50 mph'], ['۶۰ mph', '60 mph']], 'B', 'حد معمول ۵۰ mph است؛ در اسکاتلند معمولاً ۴۰ mph. // Normally 50 mph; Scotland is normally 40 mph.', 'hard'),
+      q('حد معمول آن وسیله در بزرگراه چیست؟', 'What is its normal motorway limit?', [['۵۰ mph', '50 mph'], ['۶۰ mph', '60 mph'], ['۷۰ mph', '70 mph']], 'B', 'برای HGV بیش از ۷٫۵ تن معمولاً ۶۰ mph است. // It is normally 60 mph.', 'easy'),
+      q('آیا محدودکننده سرعت در سرازیری سرعت را تضمین می‌کند؟', 'Does a speed limiter guarantee speed downhill?', [['بله', 'Yes'], ['خیر', 'No'], ['فقط در باران', 'Only in rain']], 'B', 'راننده باید با ترمز و دنده سرعت را کنترل کند. // The driver must control speed with braking and gearing.', 'medium'),
     ],
   },
 
@@ -150,9 +151,9 @@ const RULES = {
       r(48, 'خروجی را زود برنامه‌ریزی کنید؛ هرگز برای رسیدن به خروجی به‌طور ناگهانی چند لاین را قطع نکنید.', 'Plan exits early; never cut suddenly across several lanes to reach an exit.'),
     ],
     quiz: [
-      q('HGV بیش از ۷٫۵ تن در بزرگراه سه‌لاین معمولاً از کدام لاین نباید استفاده کند؟', 'Which lane must an HGV over 7.5 tonnes normally not use on a three-lane motorway?', [['لاین چپ', 'Left lane'], ['لاین وسط', 'Middle lane'], ['لاین راست', 'Right-hand lane']], 'C', 'این وسایل معمولاً از راست‌ترین لاین منع شده‌اند. // These vehicles are normally prohibited from the right-hand lane.'),
-      q('X قرمز بالای لاین یعنی چه؟', 'What does a red X above a lane mean?', [['لاین بسته است', 'Lane closed'], ['حداقل سرعت', 'Minimum speed'], ['لاین فقط HGV', 'HGV-only lane']], 'A', 'رانندگی در لاین X قرمز ممنوع است. // You must not drive in a red-X lane.'),
-      q('شانه سخت چه زمانی برای توقف است؟', 'When should you stop on the hard shoulder?', [['برای تماس تلفنی', 'For a phone call'], ['فقط اضطرار واقعی', 'Only in a genuine emergency'], ['برای استراحت تاخوگراف', 'For a tachograph break']], 'B', 'برای توقف عادی از خدمات بزرگراه استفاده کنید. // Use motorway services for routine stops.'),
+      q('HGV بیش از ۷٫۵ تن در بزرگراه سه‌لاین معمولاً از کدام لاین نباید استفاده کند؟', 'Which lane must an HGV over 7.5 tonnes normally not use on a three-lane motorway?', [['لاین چپ', 'Left lane'], ['لاین وسط', 'Middle lane'], ['لاین راست', 'Right-hand lane']], 'C', 'این وسایل معمولاً از راست‌ترین لاین منع شده‌اند. // These vehicles are normally prohibited from the right-hand lane.', 'hard'),
+      q('X قرمز بالای لاین یعنی چه؟', 'What does a red X above a lane mean?', [['لاین بسته است', 'Lane closed'], ['حداقل سرعت', 'Minimum speed'], ['لاین فقط HGV', 'HGV-only lane']], 'A', 'رانندگی در لاین X قرمز ممنوع است. // You must not drive in a red-X lane.', 'easy'),
+      q('شانه سخت چه زمانی برای توقف است؟', 'When should you stop on the hard shoulder?', [['برای تماس تلفنی', 'For a phone call'], ['فقط اضطرار واقعی', 'Only in a genuine emergency'], ['برای استراحت تاخوگراف', 'For a tachograph break']], 'B', 'برای توقف عادی از خدمات بزرگراه استفاده کنید. // Use motorway services for routine stops.', 'easy'),
     ],
   },
 
@@ -170,9 +171,9 @@ const RULES = {
       r(56, 'برای کاربران آسیب‌پذیر زمان و فضای بیشتر بدهید؛ حرکت ناگهانی آنان را پیش‌بینی کنید.', 'Give vulnerable road users extra time and space, and anticipate unexpected movement.'),
     ],
     quiz: [
-      q('هنگام گردش چپ بزرگ‌ترین خطر نزدیک چیست؟', 'What is a major nearside danger when turning left?', [['دوچرخه‌سوار در نقطه کور', 'A cyclist in the blind spot'], ['تابلوی پشت سر', 'A sign behind'], ['خودروی روبه‌رو در فاصله دور', 'A distant oncoming car']], 'A', 'پیش از گردش آینه و نقطه کور چپ را دوباره بررسی کنید. // Recheck the nearside mirror and blind spot.'),
-      q('چرا عقب وسیله در گردش خطر ایجاد می‌کند؟', 'Why can the rear of a large vehicle be dangerous in a turn?', [['به بیرون می‌چرخد', 'It swings outward'], ['همیشه بالا می‌رود', 'It always rises'], ['چراغ‌ها خاموش می‌شوند', 'Lights switch off']], 'A', 'rear swing می‌تواند به اشیا یا افراد برخورد کند. // Rear swing can strike objects or people.'),
-      q('اگر خروجی تقاطع بسته است چه کنید؟', 'What should you do if the junction exit is blocked?', [['وارد شوید و بوق بزنید', 'Enter and sound the horn'], ['پشت خط منتظر بمانید', 'Wait before the junction'], ['از پیاده‌رو عبور کنید', 'Use the pavement']], 'B', 'تا بازشدن خروجی وارد نشوید. // Do not enter until the exit is clear.'),
+      q('هنگام گردش چپ بزرگ‌ترین خطر نزدیک چیست؟', 'What is a major nearside danger when turning left?', [['دوچرخه‌سوار در نقطه کور', 'A cyclist in the blind spot'], ['تابلوی پشت سر', 'A sign behind'], ['خودروی روبه‌رو در فاصله دور', 'A distant oncoming car']], 'A', 'پیش از گردش آینه و نقطه کور چپ را دوباره بررسی کنید. // Recheck the nearside mirror and blind spot.', 'medium'),
+      q('چرا عقب وسیله در گردش خطر ایجاد می‌کند؟', 'Why can the rear of a large vehicle be dangerous in a turn?', [['به بیرون می‌چرخد', 'It swings outward'], ['همیشه بالا می‌رود', 'It always rises'], ['چراغ‌ها خاموش می‌شوند', 'Lights switch off']], 'A', 'rear swing می‌تواند به اشیا یا افراد برخورد کند. // Rear swing can strike objects or people.', 'medium'),
+      q('اگر خروجی تقاطع بسته است چه کنید؟', 'What should you do if the junction exit is blocked?', [['وارد شوید و بوق بزنید', 'Enter and sound the horn'], ['پشت خط منتظر بمانید', 'Wait before the junction'], ['از پیاده‌رو عبور کنید', 'Use the pavement']], 'B', 'تا بازشدن خروجی وارد نشوید. // Do not enter until the exit is clear.', 'medium'),
     ],
   },
 
@@ -190,9 +191,9 @@ const RULES = {
       r(64, 'هیچ‌کس نباید میان وسیله در حال مانور و مانع ثابت بایستد؛ منطقه مانور را از افراد خالی نگه دارید.', 'Nobody should stand between a manoeuvring vehicle and a fixed object; keep the manoeuvring area clear.'),
     ],
     quiz: [
-      q('اگر کمک‌راهنما را در آینه گم کردید چه کنید؟', 'What should you do if you lose sight of the banksman?', [['ادامه دهید', 'Continue'], ['فوراً توقف کنید', 'Stop immediately'], ['سریع‌تر حرکت کنید', 'Speed up']], 'B', 'تا برقراری دوباره ارتباط توقف کنید. // Stop until communication is restored.'),
-      q('بهترین کار پیش از دنده‌عقب در محل ناآشنا چیست؟', 'What is best before reversing in an unfamiliar area?', [['پیاده شوید و بررسی کنید', 'Get out and inspect'], ['فقط بوق بزنید', 'Only sound the horn'], ['چراغ‌ها را خاموش کنید', 'Switch off lights']], 'A', 'بررسی پیاده خطرهای پنهان را آشکار می‌کند. // A walkaround reveals hidden hazards.'),
-      q('آیا دوربین عقب جای آینه‌ها را می‌گیرد؟', 'Does a reversing camera replace mirrors?', [['بله', 'Yes'], ['خیر', 'No'], ['فقط شب', 'Only at night']], 'B', 'همه وسایل کمک فقط مکمل مشاهده راننده‌اند. // Aids only supplement driver observation.'),
+      q('اگر کمک‌راهنما را در آینه گم کردید چه کنید؟', 'What should you do if you lose sight of the banksman?', [['ادامه دهید', 'Continue'], ['فوراً توقف کنید', 'Stop immediately'], ['سریع‌تر حرکت کنید', 'Speed up']], 'B', 'تا برقراری دوباره ارتباط توقف کنید. // Stop until communication is restored.', 'medium'),
+      q('بهترین کار پیش از دنده‌عقب در محل ناآشنا چیست؟', 'What is best before reversing in an unfamiliar area?', [['پیاده شوید و بررسی کنید', 'Get out and inspect'], ['فقط بوق بزنید', 'Only sound the horn'], ['چراغ‌ها را خاموش کنید', 'Switch off lights']], 'A', 'بررسی پیاده خطرهای پنهان را آشکار می‌کند. // A walkaround reveals hidden hazards.', 'medium'),
+      q('آیا دوربین عقب جای آینه‌ها را می‌گیرد؟', 'Does a reversing camera replace mirrors?', [['بله', 'Yes'], ['خیر', 'No'], ['فقط شب', 'Only at night']], 'B', 'همه وسایل کمک فقط مکمل مشاهده راننده‌اند. // Aids only supplement driver observation.', 'easy'),
     ],
   },
 
@@ -210,9 +211,9 @@ const RULES = {
       r(72, 'فضای فرار نگه دارید و از رانندگی کنار وسیله دیگر برای مدت طولانی خودداری کنید.', 'Maintain an escape space and avoid driving alongside another vehicle for long periods.'),
     ],
     quiz: [
-      q('چرا باید خطر را زودتر شناسایی کنید؟', 'Why must a large-vehicle driver identify hazards early?', [['وسیله برای توقف زمان بیشتری می‌خواهد', 'The vehicle needs longer to stop'], ['بوق ضعیف‌تر است', 'The horn is quieter'], ['چراغ‌ها کوچک‌ترند', 'Lights are smaller']], 'A', 'جرم و اندازه زیاد واکنش زودهنگام را ضروری می‌کند. // Greater size and mass demand early action.'),
-      q('قانون دو ثانیه در جاده خشک چیست؟', 'What is the two-second rule on a dry road?', [['حداقل نقطه شروع فاصله', 'A minimum starting point for following distance'], ['حداکثر زمان توقف', 'Maximum stopping time'], ['زمان تعویض دنده', 'Gear-change time']], 'A', 'با وسیله سنگین یا شرایط بد فاصله بیشتری لازم است. // More space is needed for heavy vehicles or poor conditions.'),
-      q('هنگام خستگی بهترین اقدام چیست؟', 'What is the best action when tired?', [['پنجره را باز کنید', 'Open a window'], ['در محل امن توقف و استراحت کنید', 'Stop safely and rest'], ['سرعت را زیاد کنید', 'Increase speed']], 'B', 'راه‌حل واقعی خستگی استراحت است. // Rest is the effective answer to fatigue.'),
+      q('چرا باید خطر را زودتر شناسایی کنید؟', 'Why must a large-vehicle driver identify hazards early?', [['وسیله برای توقف زمان بیشتری می‌خواهد', 'The vehicle needs longer to stop'], ['بوق ضعیف‌تر است', 'The horn is quieter'], ['چراغ‌ها کوچک‌ترند', 'Lights are smaller']], 'A', 'جرم و اندازه زیاد واکنش زودهنگام را ضروری می‌کند. // Greater size and mass demand early action.', 'medium'),
+      q('قانون دو ثانیه در جاده خشک چیست؟', 'What is the two-second rule on a dry road?', [['حداقل نقطه شروع فاصله', 'A minimum starting point for following distance'], ['حداکثر زمان توقف', 'Maximum stopping time'], ['زمان تعویض دنده', 'Gear-change time']], 'A', 'با وسیله سنگین یا شرایط بد فاصله بیشتری لازم است. // More space is needed for heavy vehicles or poor conditions.', 'easy'),
+      q('هنگام خستگی بهترین اقدام چیست؟', 'What is the best action when tired?', [['پنجره را باز کنید', 'Open a window'], ['در محل امن توقف و استراحت کنید', 'Stop safely and rest'], ['سرعت را زیاد کنید', 'Increase speed']], 'B', 'راه‌حل واقعی خستگی استراحت است. // Rest is the effective answer to fatigue.', 'easy'),
     ],
   },
 
@@ -230,9 +231,9 @@ const RULES = {
       r(80, 'گرمای زیاد فشار لاستیک و خطر خرابی را بالا می‌برد؛ توقف‌های بازرسی را رعایت و ترمزها را بیش‌ازحد گرم نکنید.', 'High temperatures increase tyre pressure and failure risk; make inspection stops and avoid overheating brakes.'),
     ],
     quiz: [
-      q('فاصله توقف روی یخ ممکن است چند برابر شود؟', 'How much greater can stopping distance be on ice?', [['دو برابر', 'Twice'], ['پنج برابر', 'Five times'], ['تا ده برابر', 'Up to ten times']], 'C', 'روی یخ فاصله توقف ممکن است تا ده برابر شود. // It can be up to ten times greater.'),
-      q('کدام وسیله در باد شدید آسیب‌پذیرتر است؟', 'Which vehicle is more vulnerable in strong winds?', [['وسیله بلند و خالی', 'A tall empty vehicle'], ['وسیله کوتاه و پر', 'A low fully laden vehicle'], ['خودروی پارک‌شده', 'A parked car']], 'A', 'سطح جانبی بالا و وزن کمتر اثر باد را افزایش می‌دهد. // A large side area and lower mass increase wind effect.'),
-      q('پس از عبور از آب چه کنید؟', 'What should you do after driving through water?', [['ترمز را در محل امن آزمایش کنید', 'Test brakes safely'], ['فوراً موتور را خاموش کنید', 'Stop engine immediately'], ['سرعت را زیاد کنید', 'Increase speed']], 'A', 'آب می‌تواند کارایی ترمز را کم کند. // Water can reduce braking efficiency.'),
+      q('فاصله توقف روی یخ ممکن است چند برابر شود؟', 'How much greater can stopping distance be on ice?', [['دو برابر', 'Twice'], ['پنج برابر', 'Five times'], ['تا ده برابر', 'Up to ten times']], 'C', 'روی یخ فاصله توقف ممکن است تا ده برابر شود. // It can be up to ten times greater.', 'hard'),
+      q('کدام وسیله در باد شدید آسیب‌پذیرتر است؟', 'Which vehicle is more vulnerable in strong winds?', [['وسیله بلند و خالی', 'A tall empty vehicle'], ['وسیله کوتاه و پر', 'A low fully laden vehicle'], ['خودروی پارک‌شده', 'A parked car']], 'A', 'سطح جانبی بالا و وزن کمتر اثر باد را افزایش می‌دهد. // A large side area and lower mass increase wind effect.', 'medium'),
+      q('پس از عبور از آب چه کنید؟', 'What should you do after driving through water?', [['ترمز را در محل امن آزمایش کنید', 'Test brakes safely'], ['فوراً موتور را خاموش کنید', 'Stop engine immediately'], ['سرعت را زیاد کنید', 'Increase speed']], 'A', 'آب می‌تواند کارایی ترمز را کم کند. // Water can reduce braking efficiency.', 'medium'),
     ],
   },
 
@@ -250,9 +251,9 @@ const RULES = {
       r(88, 'ترمز موتور یا ریتاردر را طبق راهنمای سازنده استفاده کنید، اما کنترل نرم و ایمن را بر صرفه‌جویی مقدم بدانید.', 'Use engine braking or a retarder as recommended, but always prioritise smooth, safe control over economy.'),
     ],
     quiz: [
-      q('کدام روش معمولاً مصرف را کم می‌کند؟', 'Which method normally reduces fuel use?', [['نگاه دور و سرعت یکنواخت', 'Looking ahead and maintaining steady speed'], ['شتاب شدید', 'Harsh acceleration'], ['فشار کم لاستیک', 'Low tyre pressure']], 'A', 'پیش‌بینی، ترمز و شتاب غیرضروری را کم می‌کند. // Anticipation reduces needless braking and acceleration.'),
-      q('فشار کم لاستیک چه اثری دارد؟', 'What effect does low tyre pressure have?', [['مصرف را بیشتر می‌کند', 'Increases fuel use'], ['مصرف را کم می‌کند', 'Reduces fuel use'], ['هیچ اثری ندارد', 'Has no effect']], 'A', 'مقاومت غلتشی و مصرف بالا می‌رود. // Rolling resistance and fuel use increase.'),
-      q('در توقف طولانی چه کنید؟', 'What should you do during a long stop?', [['بی‌دلیل موتور را روشن نگذارید', 'Avoid unnecessary idling'], ['دور موتور را بالا نگه دارید', 'Keep engine speed high'], ['ترمز دستی را آزاد کنید', 'Release parking brake']], 'A', 'خاموش‌کردن ایمن موتور مصرف و آلایندگی را کم می‌کند. // Safely switching off reduces fuel use and emissions.'),
+      q('کدام روش معمولاً مصرف را کم می‌کند؟', 'Which method normally reduces fuel use?', [['نگاه دور و سرعت یکنواخت', 'Looking ahead and maintaining steady speed'], ['شتاب شدید', 'Harsh acceleration'], ['فشار کم لاستیک', 'Low tyre pressure']], 'A', 'پیش‌بینی، ترمز و شتاب غیرضروری را کم می‌کند. // Anticipation reduces needless braking and acceleration.', 'medium'),
+      q('فشار کم لاستیک چه اثری دارد؟', 'What effect does low tyre pressure have?', [['مصرف را بیشتر می‌کند', 'Increases fuel use'], ['مصرف را کم می‌کند', 'Reduces fuel use'], ['هیچ اثری ندارد', 'Has no effect']], 'A', 'مقاومت غلتشی و مصرف بالا می‌رود. // Rolling resistance and fuel use increase.', 'easy'),
+      q('در توقف طولانی چه کنید؟', 'What should you do during a long stop?', [['بی‌دلیل موتور را روشن نگذارید', 'Avoid unnecessary idling'], ['دور موتور را بالا نگه دارید', 'Keep engine speed high'], ['ترمز دستی را آزاد کنید', 'Release parking brake']], 'A', 'خاموش‌کردن ایمن موتور مصرف و آلایندگی را کم می‌کند. // Safely switching off reduces fuel use and emissions.', 'easy'),
     ],
   },
 
@@ -270,9 +271,9 @@ const RULES = {
       r(96, 'وسیله یا تریلر خراب را فقط با تجهیزات و روش مجاز بازیابی کنید؛ خطر وزن، ترمز و اتصال را ارزیابی کنید.', 'Recover a disabled vehicle or trailer only with suitable equipment and an authorised method, considering weight, brakes and coupling.'),
     ],
     quiz: [
-      q('آیا مثلث هشدار را روی سواره‌روی بزرگراه می‌گذارید؟', 'Should you place a warning triangle on a motorway carriageway?', [['بله', 'Yes'], ['خیر', 'No'], ['فقط شب', 'Only at night']], 'B', 'این کار بسیار خطرناک است. // It is extremely dangerous.'),
-      q('اگر در لاین زنده گیر کرده و خروج امن ممکن نیست چه کنید؟', 'What should you do if stranded in a live lane and unable to exit safely?', [['پیاده شوید', 'Get out'], ['کمربند بسته و با ۹۹۹ تماس بگیرید', 'Stay belted and call 999'], ['زیر وسیله بروید', 'Go under the vehicle']], 'B', 'داخل بمانید، چراغ خطر و تماس فوری. // Stay inside, use hazards and call immediately.'),
-      q('با نشت مواد خطرناک چه کنید؟', 'What should you do with a dangerous-goods spill?', [['لمس و بررسی کنید', 'Touch and inspect it'], ['از فاصله امن گزارش دهید', 'Report it from a safe distance'], ['با آب بشویید', 'Wash it away']], 'B', 'از ماده دور بمانید و اطلاعات را به اورژانس بدهید. // Keep away and inform emergency services.'),
+      q('آیا مثلث هشدار را روی سواره‌روی بزرگراه می‌گذارید؟', 'Should you place a warning triangle on a motorway carriageway?', [['بله', 'Yes'], ['خیر', 'No'], ['فقط شب', 'Only at night']], 'B', 'این کار بسیار خطرناک است. // It is extremely dangerous.', 'easy'),
+      q('اگر در لاین زنده گیر کرده و خروج امن ممکن نیست چه کنید؟', 'What should you do if stranded in a live lane and unable to exit safely?', [['پیاده شوید', 'Get out'], ['کمربند بسته و با ۹۹۹ تماس بگیرید', 'Stay belted and call 999'], ['زیر وسیله بروید', 'Go under the vehicle']], 'B', 'داخل بمانید، چراغ خطر و تماس فوری. // Stay inside, use hazards and call immediately.', 'hard'),
+      q('با نشت مواد خطرناک چه کنید؟', 'What should you do with a dangerous-goods spill?', [['لمس و بررسی کنید', 'Touch and inspect it'], ['از فاصله امن گزارش دهید', 'Report it from a safe distance'], ['با آب بشویید', 'Wash it away']], 'B', 'از ماده دور بمانید و اطلاعات را به اورژانس بدهید. // Keep away and inform emergency services.', 'hard'),
     ],
   },
 
@@ -290,9 +291,9 @@ const RULES = {
       r(104, 'با مأموران DVSA و پلیس همکاری کنید؛ ممکن است وسیله، وزن، اسناد و سوابق ساعات را بررسی کنند.', 'Cooperate with DVSA examiners and police, who may inspect the vehicle, weight, documents and hours records.'),
     ],
     quiz: [
-      q('Driver CPC دوره‌ای معمولاً چند ساعت در پنج سال است؟', 'How much periodic Driver CPC training is normally required in five years?', [['۷ ساعت', '7 hours'], ['۲۱ ساعت', '21 hours'], ['۳۵ ساعت', '35 hours']], 'C', 'برای حفظ صلاحیت معمولاً ۳۵ ساعت در پنج سال لازم است. // Normally 35 hours every five years.'),
-      q('برای رانندگی حرفه‌ای در اروپا کدام CPC لازم است؟', 'Which CPC is required for professional driving in Europe?', [['National CPC', 'National CPC'], ['International CPC', 'International CPC'], ['هیچ‌کدام', 'Neither']], 'B', 'National CPC برای رانندگی فقط در بریتانیا است. // National CPC is for UK-only driving.'),
-      q('چه کسی باید آمادگی جسمی و ذهنی راننده را بررسی کند؟', 'Who must ensure the driver is fit to drive?', [['خود راننده', 'The driver'], ['مسافر', 'A passenger'], ['راننده دیگر', 'Another driver']], 'A', 'راننده مسئول است در حالت نامناسب رانندگی نکند. // The driver must not drive while unfit.'),
+      q('Driver CPC دوره‌ای معمولاً چند ساعت در پنج سال است؟', 'How much periodic Driver CPC training is normally required in five years?', [['۷ ساعت', '7 hours'], ['۲۱ ساعت', '21 hours'], ['۳۵ ساعت', '35 hours']], 'C', 'برای حفظ صلاحیت معمولاً ۳۵ ساعت در پنج سال لازم است. // Normally 35 hours every five years.', 'hard'),
+      q('برای رانندگی حرفه‌ای در اروپا کدام CPC لازم است؟', 'Which CPC is required for professional driving in Europe?', [['National CPC', 'National CPC'], ['International CPC', 'International CPC'], ['هیچ‌کدام', 'Neither']], 'B', 'National CPC برای رانندگی فقط در بریتانیا است. // National CPC is for UK-only driving.', 'medium'),
+      q('چه کسی باید آمادگی جسمی و ذهنی راننده را بررسی کند؟', 'Who must ensure the driver is fit to drive?', [['خود راننده', 'The driver'], ['مسافر', 'A passenger'], ['راننده دیگر', 'Another driver']], 'A', 'راننده مسئول است در حالت نامناسب رانندگی نکند. // The driver must not drive while unfit.', 'easy'),
     ],
   },
 
@@ -310,9 +311,9 @@ const RULES = {
       r(112, 'اسناد بار و مسافر را محافظت و اطلاعات را درست نگه دارید؛ هرگز سند را جعل یا اطلاعات نادرست ثبت نکنید.', 'Protect load and passenger documentation and keep records accurate; never falsify documents or entries.'),
     ],
     quiz: [
-      q('کدام دسته معمولاً برای کامیون مفصلی بزرگ لازم است؟', 'Which category is normally needed for a large articulated lorry?', [['CE', 'CE'], ['D1', 'D1'], ['B', 'B']], 'A', 'CE وسایل دسته C همراه تریلر را پوشش می‌دهد. // CE covers category C vehicles with a trailer.'),
-      q('پلاک وزارت چه چیزی را نشان می‌دهد؟', 'What does the ministry plate show?', [['حدود وزن قانونی', 'Legal weight limits'], ['ساعات راننده', 'Driver hours'], ['قیمت بار', 'Load value']], 'A', 'وزن محور، ناخالص و قطار را باید با پلاک تطبیق دهید. // Check axle, gross and train weights against the plate.'),
-      q('با عیب ایمنی مهم چه کنید؟', 'What should you do with a safety-critical defect?', [['تا هفته بعد صبر کنید', 'Wait until next week'], ['پیش از استفاده رفع شود', 'Have it fixed before use'], ['فقط شفاهی بگویید', 'Only mention it verbally']], 'B', 'وسیله ناایمن نباید استفاده شود. // An unsafe vehicle must not be used.'),
+      q('کدام دسته معمولاً برای کامیون مفصلی بزرگ لازم است؟', 'Which category is normally needed for a large articulated lorry?', [['CE', 'CE'], ['D1', 'D1'], ['B', 'B']], 'A', 'CE وسایل دسته C همراه تریلر را پوشش می‌دهد. // CE covers category C vehicles with a trailer.', 'medium'),
+      q('پلاک وزارت چه چیزی را نشان می‌دهد؟', 'What does the ministry plate show?', [['حدود وزن قانونی', 'Legal weight limits'], ['ساعات راننده', 'Driver hours'], ['قیمت بار', 'Load value']], 'A', 'وزن محور، ناخالص و قطار را باید با پلاک تطبیق دهید. // Check axle, gross and train weights against the plate.', 'medium'),
+      q('با عیب ایمنی مهم چه کنید؟', 'What should you do with a safety-critical defect?', [['تا هفته بعد صبر کنید', 'Wait until next week'], ['پیش از استفاده رفع شود', 'Have it fixed before use'], ['فقط شفاهی بگویید', 'Only mention it verbally']], 'B', 'وسیله ناایمن نباید استفاده شود. // An unsafe vehicle must not be used.', 'medium'),
     ],
   },
 };

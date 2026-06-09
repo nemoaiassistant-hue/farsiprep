@@ -14,6 +14,12 @@
     quizIndex: 0,
     quizAnswered: false,
     quizScore: 0,
+    quizMode: 'section',
+    quizQuestions: [],
+    quizDifficulty: 'all',
+    quizTimer: null,
+    quizTimeRemaining: 0,
+    quizStartedAt: null,
     completedSections: JSON.parse(localStorage.getItem('hc_completed') || '[]'),
     lastQuizScore: localStorage.getItem('hc_last_score') || '—',
     // Flashcard state
@@ -208,7 +214,7 @@
   // BOTTOM NAV
   // =============================================
   function updateBottomNav(active) {
-    const map = { home: 'navHome', read: 'navRead', flashcards: 'navFlashcards', progress: 'navProgress', showme: 'navShowMe' };
+    const map = { home: 'navHome', read: 'navRead', flashcards: 'navFlashcards', progress: 'navProgress', showme: 'navShowMe', quiz: 'navQuiz' };
     const activeId = map[active] || 'navHome';
     $$('.bottom-nav-item').forEach(btn => {
       btn.classList.toggle('active', btn.id === activeId);
@@ -238,6 +244,10 @@
   function ensureShowMeUI() {
     $('#app').insertAdjacentHTML('beforeend', '<div class="view" id="showmeView"><div id="showmeContainer"></div></div>');
     $('#bottomNav').insertAdjacentHTML('beforeend', `
+      <button class="bottom-nav-item" id="navQuiz" data-target="quiz">
+        <span class="bottom-nav-icon">📝</span>
+        <span class="bottom-nav-label">آزمون<br><span dir="ltr">Quiz</span></span>
+      </button>
       <button class="bottom-nav-item" id="navShowMe" data-target="showme" onclick="openShowMe()">
         <span class="bottom-nav-icon">🔧</span>
         <span class="bottom-nav-label">نمایش / توضیح<br><span dir="ltr">Show/Tell</span></span>
@@ -468,7 +478,7 @@
 
     // Bind quiz
     const quizBtn = $('#startQuizBtn');
-    if (quizBtn) quizBtn.addEventListener('click', () => startQuiz(catId));
+    if (quizBtn) quizBtn.addEventListener('click', () => openQuizView(catId));
 
     // Bind prev/next nav
     document.querySelectorAll('.section-nav-btn').forEach(btn => {
@@ -507,31 +517,144 @@
   }
 
   // =============================================
-  // QUIZ (existing + progress tracking)
+  // QUIZ MODES
   // =============================================
-  function startQuiz(catId) {
-    state.currentCategory = catId;
+  function clearQuizTimer() {
+    if (state.quizTimer) clearInterval(state.quizTimer);
+    state.quizTimer = null;
+  }
+
+  function allQuizQuestions() {
+    return Object.keys(RULES).flatMap(catId => (RULES[catId].quiz || []).map((question, index) => ({
+      ...question,
+      categoryId: catId,
+      difficulty: question.difficulty || ['easy', 'medium', 'hard'][index % 3],
+    })));
+  }
+
+  function sampleQuestions(questions, count) {
+    const result = [];
+    while (result.length < count && questions.length) {
+      result.push(...shuffleArray(questions.slice()).slice(0, count - result.length));
+    }
+    return result;
+  }
+
+  function beginQuiz(mode, questions, catId) {
+    clearQuizTimer();
+    state.quizMode = mode;
+    state.currentCategory = catId || null;
+    state.quizQuestions = questions;
     state.quizIndex = 0;
     state.quizScore = 0;
     state.quizAnswered = false;
+    state.quizStartedAt = Date.now();
+    state.quizTimeRemaining = mode === 'mock' ? 57 * 60 : 0;
     showView('quiz');
     renderQuestion();
+    if (mode === 'mock') {
+      state.quizTimer = setInterval(() => {
+        state.quizTimeRemaining = Math.max(0, 57 * 60 - Math.floor((Date.now() - state.quizStartedAt) / 1000));
+        updateQuizTimer();
+        if (state.quizTimeRemaining <= 0) renderMockResult();
+      }, 1000);
+    }
+  }
+
+  function startQuiz(catId, difficulty) {
+    state.quizDifficulty = difficulty || 'all';
+    const quiz = (RULES[catId].quiz || []).map((question, index) => ({
+      ...question,
+      difficulty: question.difficulty || ['easy', 'medium', 'hard'][index % 3],
+    })).filter(question => state.quizDifficulty === 'all' || question.difficulty === state.quizDifficulty);
+    beginQuiz('section', quiz, catId);
+  }
+
+  function openQuizMenu() {
+    clearQuizTimer();
+    state.quizMode = 'menu';
+    showView('quiz');
+    const history = JSON.parse(localStorage.getItem('hc_mock_history') || '[]');
+    const historyHtml = history.length ? `
+      <div style="margin-top:24px;text-align:right">
+        <strong>آخرین آزمون‌های شبیه‌سازی / Recent Mock Tests</strong>
+        ${history.slice().reverse().map(item => `<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #eee;font-size:13px"><span>${new Date(item.date).toLocaleDateString()}</span><span style="color:${item.passed ? '#16803a' : '#dc2626'}">${item.score}/50 · ${item.passed ? 'Pass' : 'Fail'}</span></div>`).join('')}
+      </div>` : '';
+    $('#quizContainer').innerHTML = `
+      <div style="text-align:center;margin-bottom:20px"><h1 class="section-title">📝 انتخاب نوع آزمون</h1><p class="section-title-en">Choose Quiz Mode</p></div>
+      <div style="display:grid;gap:14px">
+        <button class="quiz-question quiz-mode-card" id="sectionQuizMode" style="font:inherit;text-align:right;cursor:pointer;border:2px solid #4361ee"><strong style="font-size:18px">📚 آزمون بخش / Section Quiz</strong><div style="color:#667085;margin-top:6px">انتخاب بخش و سطح دشواری / Choose category and difficulty</div></button>
+        <button class="quiz-question quiz-mode-card" id="quickQuizMode" style="font:inherit;text-align:right;cursor:pointer;border:2px solid #2563eb;background:#eff6ff"><strong style="font-size:18px;color:#2563eb">⚡ آزمون سریع / Quick Quiz</strong><div style="color:#667085;margin-top:6px">۱۰ سوال تصادفی، بدون زمان‌سنج / 10 random questions, no timer</div></button>
+        <button class="quiz-question quiz-mode-card" id="mockQuizMode" style="font:inherit;text-align:right;cursor:pointer;border:2px solid #f59e0b;background:#fffbeb"><strong style="font-size:18px;color:#b45309">⏱️ آزمون شبیه‌سازی / Mock Test</strong><div style="color:#667085;margin-top:6px">آزمون شبیه‌سازی واقعی DVSA — ۵۰ سوال، ۵۷ دقیقه</div></button>
+      </div>${historyHtml}`;
+    $('#sectionQuizMode').addEventListener('click', openSectionQuizMenu);
+    $('#quickQuizMode').addEventListener('click', openQuickQuiz);
+    $('#mockQuizMode').addEventListener('click', renderMockWarning);
+  }
+
+  function openSectionQuizMenu() {
+    state.quizMode = 'section-menu';
+    $('#quizContainer').innerHTML = `
+      <div style="text-align:center;margin-bottom:20px"><h1 class="section-title">آزمون بخش / Section Quiz</h1><p class="section-title-en">Choose a category</p></div>
+      <div style="display:grid;gap:10px">${CATEGORIES.filter(cat => RULES[cat.id] && RULES[cat.id].quiz).map(cat => `<button class="quiz-question section-quiz-category" data-category="${cat.id}" style="font:inherit;text-align:right;cursor:pointer;border:1px solid #e5e7eb"><strong>${cat.icon} ${cat.title}</strong><div style="direction:ltr;text-align:left;color:#667085">${cat.titleEn}</div></button>`).join('')}</div>`;
+    $$('.section-quiz-category').forEach(btn => btn.addEventListener('click', () => openQuizView(btn.dataset.category)));
+  }
+
+  function openQuizView(catId) {
+    clearQuizTimer();
+    state.quizMode = 'section-menu';
+    state.currentCategory = catId;
+    showView('quiz');
+    const rules = RULES[catId];
+    $('#quizContainer').innerHTML = `
+      <div style="text-align:center;margin-bottom:20px"><h1 class="section-title">${rules.title}</h1><p class="section-title-en">${rules.titleEn}</p></div>
+      <div class="quiz-question"><strong>سطح دشواری / Difficulty</strong><div style="display:grid;gap:10px;margin-top:16px">
+        ${[['easy','آسان / Easy'],['medium','متوسط / Medium'],['hard','سخت / Hard'],['all','همه / All']].map(([id,label]) => `<button class="start-quiz-btn difficulty-btn" data-difficulty="${id}">${label}</button>`).join('')}
+      </div></div>`;
+    $$('.difficulty-btn').forEach(btn => btn.addEventListener('click', () => startQuiz(catId, btn.dataset.difficulty)));
+  }
+  window.openQuizView = openQuizView;
+
+  function openQuickQuiz() {
+    beginQuiz('quick', sampleQuestions(allQuizQuestions(), 10));
+  }
+
+  function renderMockWarning() {
+    state.quizMode = 'mock-warning';
+    $('#quizContainer').innerHTML = `<div class="quiz-result"><div class="quiz-result-icon">⏱️</div><div class="quiz-result-message">آزمون شبیه‌سازی واقعی DVSA — ۵۰ سوال، ۵۷ دقیقه<br><span style="font-size:14px;color:#888;direction:ltr">Pass mark: 43/50 (86%)</span></div><button class="start-quiz-btn" style="margin-top:24px" id="startMockBtn">شروع آزمون / Start Mock Test</button></div>`;
+    $('#startMockBtn').addEventListener('click', openMockTest);
+  }
+
+  function openMockTest() {
+    beginQuiz('mock', sampleQuestions(allQuizQuestions(), 50));
+  }
+
+  function formatTime(seconds) {
+    const mins = Math.floor(Math.max(0, seconds) / 60);
+    const secs = Math.max(0, seconds) % 60;
+    return `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+  }
+
+  function updateQuizTimer() {
+    const timer = $('#quizTimer');
+    if (timer) timer.textContent = `⏱️ ${formatTime(state.quizTimeRemaining)}`;
   }
 
   function renderQuestion() {
-    const rules = RULES[state.currentCategory];
-    const quiz = rules.quiz;
+    const quiz = state.quizQuestions;
     if (!quiz || state.quizIndex >= quiz.length) {
-      renderQuizResult();
+      if (state.quizMode === 'mock') renderMockResult();
+      else renderQuizResult();
       return;
     }
     const q = quiz[state.quizIndex];
 
     const progress = ((state.quizIndex) / quiz.length * 100).toFixed(0);
     let html = `
+      ${state.quizMode === 'mock' ? `<div style="display:flex;justify-content:space-between;direction:ltr;font-weight:800;color:#b45309;font-size:18px;margin-bottom:12px"><span id="quizTimer">⏱️ ${formatTime(state.quizTimeRemaining)}</span><span id="mockScore">${state.quizScore}/50</span></div>` : ''}
       <div class="quiz-progress">
-        <div class="quiz-progress-bar"><div class="quiz-progress-fill" style="width:${progress}%"></div></div>
-        <span class="quiz-progress-text">${state.quizIndex + 1} / ${quiz.length}</span>
+        <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="quizProgressFill" style="width:${progress}%"></div></div>
+        <span class="quiz-progress-text" id="quizProgressText">${state.quizIndex} answered / ${quiz.length}</span>
       </div>
       <div class="quiz-question">
         <div class="quiz-q-text">${q.q}</div>
@@ -586,6 +709,14 @@
       if (cel) cel.classList.add('correct');
     }
 
+    const answered = state.quizIndex + 1;
+    const progressFill = $('#quizProgressFill');
+    const progressText = $('#quizProgressText');
+    const mockScore = $('#mockScore');
+    if (progressFill) progressFill.style.width = `${answered / state.quizQuestions.length * 100}%`;
+    if (progressText) progressText.textContent = `${answered} answered / ${state.quizQuestions.length}`;
+    if (mockScore) mockScore.textContent = `${state.quizScore}/50`;
+
     const exp = $('#quizExplanation');
     if (exp) exp.classList.add('visible');
     const next = $('#quizNextBtn');
@@ -593,7 +724,8 @@
   }
 
   function renderQuizResult() {
-    const quiz = RULES[state.currentCategory].quiz;
+    clearQuizTimer();
+    const quiz = state.quizQuestions;
     const pct = Math.round((state.quizScore / quiz.length) * 100);
     const passed = pct >= 75;
 
@@ -601,7 +733,7 @@
     localStorage.setItem('hc_last_score', state.lastQuizScore);
 
     // Save to progress tracking
-    saveQuizScore(state.currentCategory, pct);
+    if (state.quizMode === 'section') saveQuizScore(state.currentCategory, pct);
 
     updateStats();
 
@@ -618,18 +750,27 @@
             : 'نیاز به مطالعه بیشتر دارید 📚<br><span style="font-size:14px;color:#888;direction:ltr">Keep studying and try again!</span>'
           }
         </div>
-        <button class="start-quiz-btn" style="margin-top:24px;max-width:200px;margin-left:auto;margin-right:auto" id="quizResultBackBtn">
-          بازگشت / Back
+        <button class="start-quiz-btn" style="margin-top:24px;max-width:200px;margin-left:auto;margin-right:auto" id="quizResultRetryBtn">
+          تلاش دوباره / Retry
         </button>
       </div>
     `;
-    const backBtn = $('#quizResultBackBtn');
-    if (backBtn) {
-      backBtn.addEventListener('click', () => {
-        showView('home');
-        renderCategories();
-      });
-    }
+    $('#quizResultRetryBtn').addEventListener('click', () => state.quizMode === 'quick' ? openQuickQuiz() : startQuiz(state.currentCategory, state.quizDifficulty));
+  }
+
+  function renderMockResult() {
+    clearQuizTimer();
+    const pct = Math.round((state.quizScore / 50) * 100);
+    const passed = state.quizScore >= 43;
+    const timeTaken = 57 * 60 - state.quizTimeRemaining;
+    const history = JSON.parse(localStorage.getItem('hc_mock_history') || '[]');
+    history.push({ date: new Date().toISOString(), score: state.quizScore, passed, timeTaken });
+    localStorage.setItem('hc_mock_history', JSON.stringify(history.slice(-5)));
+    state.lastQuizScore = `${state.quizScore}/50`;
+    localStorage.setItem('hc_last_score', state.lastQuizScore);
+    updateStats();
+    $('#quizContainer').innerHTML = `<div class="quiz-result"><div class="quiz-result-icon">${passed ? '✅' : '❌'}</div><div class="quiz-result-score" style="color:${passed ? '#16803a' : '#dc2626'}">${state.quizScore}/50</div><div class="quiz-result-label">${pct}% · ${formatTime(timeTaken)}</div><div class="quiz-result-message" style="color:${passed ? '#16803a' : '#dc2626'}">${passed ? 'قبول شدید / Passed' : 'قبول نشدید / Failed'}</div><button class="start-quiz-btn" style="margin-top:24px" id="mockRetryBtn">تلاش دوباره / Try Again</button></div>`;
+    $('#mockRetryBtn').addEventListener('click', openMockTest);
   }
 
   // =============================================
@@ -1336,8 +1477,13 @@
     const quizBackBtn = $('#quizBackBtn');
     if (quizBackBtn) {
       quizBackBtn.addEventListener('click', () => {
-        showView('home');
-        renderCategories();
+        clearQuizTimer();
+        if (state.quizMode === 'menu') {
+          showView('home');
+          renderCategories();
+        } else {
+          openQuizMenu();
+        }
       });
     }
     const langFa = $('#langFa');
@@ -1360,6 +1506,7 @@
     // Bottom nav
     $$('.bottom-nav-item').forEach(btn => {
       btn.addEventListener('click', () => {
+        clearQuizTimer();
         const target = btn.dataset.target;
         if (target === 'home') {
           showView('home');
@@ -1370,6 +1517,8 @@
           openFlashcards();
         } else if (target === 'progress') {
           openProgress();
+        } else if (target === 'quiz') {
+          openQuizMenu();
         }
       });
     });
