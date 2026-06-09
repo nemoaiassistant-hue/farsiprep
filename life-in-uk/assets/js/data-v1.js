@@ -71,7 +71,7 @@ window.LIFE_IN_UK_QUESTIONS = [
 "id": 3,
 "topic": "values",
 "difficulty": "medium",
-"questionFa": "چه کسی آزادانه عقاید بیان می‌کند؟",
+"questionFa": "چه کسی آزادانه عقاید خود را بیان می‌کند؟",
 "questionEn": "Who freely expresses beliefs?",
 "options": [
 {
@@ -86,7 +86,7 @@ window.LIFE_IN_UK_QUESTIONS = [
 },
 {
 "id": "c",
-"textFa": "همه به شرط قانون",
+"textFa": "همه در چارچوب قانون",
 "textEn": "Everyone within law"
 },
 {
@@ -108,22 +108,22 @@ window.LIFE_IN_UK_QUESTIONS = [
 "options": [
 {
 "id": "a",
-"textFa": "قوانین فقط مهاجران",
+"textFa": "قوانین فقط برای مهاجران",
 "textEn": "Laws only immigrants"
 },
 {
 "id": "b",
-"textFa": "همه پیروی کنند",
+"textFa": "همه باید از قانون پیروی کنند",
 "textEn": "Everyone follows law"
 },
 {
 "id": "c",
-"textFa": "ملکه هر قانونی",
+"textFa": "ملکه هر قانونی را وضع می‌کند",
 "textEn": "Queen any law"
 },
 {
 "id": "d",
-"textFa": "قانون فقط دادگاه",
+"textFa": "قانون فقط مربوط به دادگاه است",
 "textEn": "Law only courts"
 }
 ],
@@ -145,7 +145,7 @@ window.LIFE_IN_UK_QUESTIONS = [
 },
 {
 "id": "b",
-"textFa": "پذیرش سبک متفاوت",
+"textFa": "پذیرش سبک‌های متفاوت زندگی",
 "textEn": "Accepting different lifestyles"
 },
 {
@@ -155,7 +155,7 @@ window.LIFE_IN_UK_QUESTIONS = [
 },
 {
 "id": "d",
-"textFa": "مهاجران فرهنگ ترک",
+"textFa": "مهاجران باید فرهنگ خود را ترک کنند",
 "textEn": "Immigrants abandon culture"
 }
 ],
@@ -172,12 +172,12 @@ window.LIFE_IN_UK_QUESTIONS = [
 "options": [
 {
 "id": "a",
-"textFa": "هر زبانی دادگاه",
+"textFa": "هر زبانی در دادگاه",
 "textEn": "Any language court"
 },
 {
 "id": "b",
-"textFa": "رای تمام سنین",
+"textFa": "حق رای برای همه سنین",
 "textEn": "Vote all ages"
 },
 {
@@ -187,7 +187,7 @@ window.LIFE_IN_UK_QUESTIONS = [
 },
 {
 "id": "d",
-"textFa": "چند همسر",
+"textFa": "چند همسری",
 "textEn": "Multiple spouses"
 }
 ],
@@ -199,7 +199,7 @@ window.LIFE_IN_UK_QUESTIONS = [
 "id": 7,
 "topic": "values",
 "difficulty": "medium",
-"questionFa": "مشارکت شامل چه می‌شود؟",
+"questionFa": "مشارکت شامل چه مواردی است؟",
 "questionEn": "Community participation?",
 "options": [
 {
@@ -209,7 +209,7 @@ window.LIFE_IN_UK_QUESTIONS = [
 },
 {
 "id": "b",
-"textFa": "رای و داوطلب",
+"textFa": "رای دادن و کار داوطلبانه",
 "textEn": "Voting and volunteer"
 },
 {
@@ -224,7 +224,7 @@ window.LIFE_IN_UK_QUESTIONS = [
 }
 ],
 "correctOption": "b",
-"explanationFa": "رای و کار داوطلبانه.",
+"explanationFa": "رای دادن و کار داوطلبانه.",
 "explanationEn": "Voting and volunteering."
 },
 {
@@ -251,29 +251,29 @@ window.LIFE_IN_UK_QUESTIONS = [
 },
 {
 "id": "d",
-"textFa": "مخالفت دموکراسی",
+"textFa": "مخالفت با دموکراسی",
 "textEn": "Opposing democracy"
 }
 ],
 "correctOption": "b",
-"explanationFa": "تسامول ارزش اساسی.",
+"explanationFa": "تسامح ارزش اساسی است.",
 "explanationEn": "Tolerance is fundamental."
 },
 {
 "id": 9,
 "topic": "values",
 "difficulty": "hard",
-"questionFa": "آزادی فردی شامل چه؟",
+"questionFa": "آزادی‌های فردی شامل چه مواردی است؟",
 "questionEn": "Individual freedoms include?",
 "options": [
 {
 "id": "a",
-"textFa": "بلامنازع",
+"textFa": "بدون محدودیت",
 "textEn": "Unrestricted"
 },
 {
 "id": "b",
-"textFa": "بیان با محدودیت قانون",
+"textFa": "آزادی بیان با محدودیت قانونی",
 "textEn": "Speech within limits"
 },
 {
@@ -288,7 +288,7 @@ window.LIFE_IN_UK_QUESTIONS = [
 }
 ],
 "correctOption": "b",
-"explanationFa": "بیان با محدودیت قانون.",
+"explanationFa": "آزادی بیان با محدودیت قانونی.",
 "explanationEn": "Speech within legal limits."
 },
 {
@@ -352,7 +352,7 @@ window.LIFE_IN_UK_QUESTIONS = [
 }
 ],
 "correctOption": "b",
-"explanationFa": "رای هم حق و مسئولیت.",
+"explanationFa": "رای دادن هم حق و هم مسئولیت است.",
 "explanationEn": "Voting is duty too."
 },
 {
@@ -423,7 +423,7 @@ window.LIFE_IN_UK_QUESTIONS = [
 "id": 14,
 "topic": "early_britain",
 "difficulty": "easy",
-"questionFa": "رومی‌ها چقدر اشغال کردند؟",
+"questionFa": "رومی‌ها چند سال بریتانیا را اشغال کردند؟",
 "questionEn": "Romans occupied Britain?",
 "options": [
 {
@@ -487,7 +487,7 @@ window.LIFE_IN_UK_QUESTIONS = [
 "id": 16,
 "topic": "early_britain",
 "difficulty": "medium",
-"questionFa": "آنلوساکسون‌ها چند پادشاهی؟",
+"questionFa": "آنگلوساکسون‌ها چند پادشاهی داشتند؟",
 "questionEn": "Anglo-Saxon kingdoms?",
 "options": [
 {
@@ -512,7 +512,7 @@ window.LIFE_IN_UK_QUESTIONS = [
 }
 ],
 "correctOption": "b",
-"explanationFa": "کنت وسکس مرسیا نورثامبریا.",
+"explanationFa": "کنت، وسکس، مرسیا، نورثامبریا و ایست‌آنگلیا.",
 "explanationEn": "Kent Wessex Mercia Northumbria East Anglia."
 },
 {
@@ -544,7 +544,7 @@ window.LIFE_IN_UK_QUESTIONS = [
 }
 ],
 "correctOption": "b",
-"explanationFa": "دانمارک نروژ سوئد.",
+"explanationFa": "دانمارک، نروژ و سوئد.",
 "explanationEn": "Denmark Norway Sweden."
 },
 {
@@ -583,7 +583,7 @@ window.LIFE_IN_UK_QUESTIONS = [
 "id": 19,
 "topic": "early_britain",
 "difficulty": "easy",
-"questionFa": "دوم بوک چه بود؟",
+"questionFa": "دومزدی بوک چه بود؟",
 "questionEn": "Domesday Book?",
 "options": [
 {
@@ -615,7 +615,7 @@ window.LIFE_IN_UK_QUESTIONS = [
 "id": 20,
 "topic": "early_britain",
 "difficulty": "medium",
-"questionFa": "نام رومی لندن چه بود؟",
+"questionFa": "نام رومیِ لندن چه بود؟",
 "questionEn": "Roman name for London?",
 "options": [
 {
@@ -679,7 +679,7 @@ window.LIFE_IN_UK_QUESTIONS = [
 "id": 22,
 "topic": "early_britain",
 "difficulty": "medium",
-"questionFa": "آنلوساکسون‌ها چه زبانی داشتند؟",
+"questionFa": "آنگلوساکسون‌ها چه زبانی داشتند؟",
 "questionEn": "Anglo-Saxon language?",
 "options": [
 {
@@ -711,7 +711,7 @@ window.LIFE_IN_UK_QUESTIONS = [
 "id": 23,
 "topic": "early_britain",
 "difficulty": "easy",
-"questionFa": "مسیحیت در دوران آنلوساکسون آمد؟",
+"questionFa": "مسیحیت در دوران آنگلوساکسون آمد؟",
 "questionEn": "Christianity in Anglo-Saxon era?",
 "options": [
 {
@@ -731,7 +731,7 @@ window.LIFE_IN_UK_QUESTIONS = [
 },
 {
 "id": "d",
-"textFa": "نه بعد رومی‌ها",
+"textFa": "نه، بعد از رومی‌ها",
 "textEn": "Not after Romans"
 }
 ],
@@ -743,7 +743,7 @@ window.LIFE_IN_UK_QUESTIONS = [
 "id": 24,
 "topic": "early_britain",
 "difficulty": "hard",
-"questionFa": "دوم بوک دستور چه کسی بود؟",
+"questionFa": "فرمان تدوین دومزدی بوک به دست چه کسی بود؟",
 "questionEn": "Domesday Book ordered by?",
 "options": [
 {
@@ -775,7 +775,7 @@ window.LIFE_IN_UK_QUESTIONS = [
 "id": 25,
 "topic": "middle_ages",
 "difficulty": "easy",
-"questionFa": "منشار بزرگ چه سالی صادر شد؟",
+"questionFa": "منشور بزرگ چه سالی صادر شد؟",
 "questionEn": "Magna Carta issued?",
 "options": [
 {
@@ -807,7 +807,7 @@ window.LIFE_IN_UK_QUESTIONS = [
 "id": 26,
 "topic": "middle_ages",
 "difficulty": "medium",
-"questionFa": "منشار بزرگ چه اهمیتی دارد؟",
+"questionFa": "منشور بزرگ چه اهمیتی دارد؟",
 "questionEn": "Magna Carta importance?",
 "options": [
 {
@@ -839,7 +839,7 @@ window.LIFE_IN_UK_QUESTIONS = [
 "id": 27,
 "topic": "middle_ages",
 "difficulty": "medium",
-"questionFa": "جنگ صد ساله بین کجا بود؟",
+"questionFa": "جنگ صد ساله بین چه کشورهایی بود؟",
 "questionEn": "Hundred Years War?",
 "options": [
 {
@@ -1127,7 +1127,7 @@ window.LIFE_IN_UK_QUESTIONS = [
 "id": 36,
 "topic": "middle_ages",
 "difficulty": "hard",
-"questionFa": "باروت‌پود چه بود؟",
+"questionFa": "توطئه باروت چه بود؟",
 "questionEn": "Gunpowder Plot?",
 "options": [
 {
@@ -1159,7 +1159,7 @@ window.LIFE_IN_UK_QUESTIONS = [
 "id": 37,
 "topic": "tudor_stuart",
 "difficulty": "easy",
-"questionFa": "هانری هشتم معروف به چیست؟",
+"questionFa": "هنری هشتم معروف به چیست؟",
 "questionEn": "Henry VIII famous for?",
 "options": [
 {
@@ -1179,19 +1179,19 @@ window.LIFE_IN_UK_QUESTIONS = [
 },
 {
 "id": "d",
-"textFa": "نویسنده منشار",
+"textFa": "نویسنده منشور",
 "textEn": "Magna Carta"
 }
 ],
 "correctOption": "a",
-"explanationFa": "شش همسر.",
+"explanationFa": "او شش همسر داشت.",
 "explanationEn": "Six wives."
 },
 {
 "id": 38,
 "topic": "tudor_stuart",
 "difficulty": "medium",
-"questionFa": "دوره الیزابت اول نام دارد؟",
+"questionFa": "عصر الیزابت اول به چه نامی شهرت دارد؟",
 "questionEn": "Elizabeth I era?",
 "options": [
 {
@@ -1216,14 +1216,14 @@ window.LIFE_IN_UK_QUESTIONS = [
 }
 ],
 "correctOption": "b",
-"explanationFa": "شکوفایی هنر دریایی.",
+"explanationFa": "این دوره به شکوفایی هنر و قدرت دریایی شهره است.",
 "explanationEn": "Arts and naval power."
 },
 {
 "id": 39,
 "topic": "tudor_stuart",
 "difficulty": "easy",
-"questionFa": "تفاوت کلیسای انگلیس با کاتولیک؟",
+"questionFa": "تفاوت کلیسای انگلیس با کلیسای کاتولیک چیست؟",
 "questionEn": "Church of England vs Catholic?",
 "options": [
 {
@@ -1248,7 +1248,7 @@ window.LIFE_IN_UK_QUESTIONS = [
 }
 ],
 "correctOption": "b",
-"explanationFa": "مستقل از پاپ.",
+"explanationFa": "کلیسای انگلیس مستقل از کلیسای کاتولیک و پاپ است.",
 "explanationEn": "Separate from Pope."
 },
 {
@@ -1280,7 +1280,7 @@ window.LIFE_IN_UK_QUESTIONS = [
 }
 ],
 "correctOption": "b",
-"explanationFa": "۱۵۸۸.",
+"explanationFa": "آرمادای اسپانیایی در سال ۱۵۸۸ شکست خورد.",
 "explanationEn": "1588."
 },
 {
@@ -1297,7 +1297,7 @@ window.LIFE_IN_UK_QUESTIONS = [
 },
 {
 "id": "b",
-"textFa": "شاهی مطلق و پارلمان",
+"textFa": "رویالستان‌ها و پارلمان",
 "textEn": "Royalists Parliament"
 },
 {
@@ -1312,7 +1312,7 @@ window.LIFE_IN_UK_QUESTIONS = [
 }
 ],
 "correctOption": "b",
-"explanationFa": "شاهی مطلق مقابل پارلمان.",
+"explanationFa": "جنگ داخلی انگلیس بین حامیان پادشاه و حامیان پارلمان بود.",
 "explanationEn": "Royalists vs Parliament."
 },
 {
@@ -1344,19 +1344,19 @@ window.LIFE_IN_UK_QUESTIONS = [
 }
 ],
 "correctOption": "b",
-"explanationFa": "رهبر پارلمان.",
+"explanationFa": "کرامول رهبر ارتش پارلمان در جنگ داخلی انگلیس بود.",
 "explanationEn": "Parliamentary army leader."
 },
 {
 "id": 43,
 "topic": "tudor_stuart",
 "difficulty": "easy",
-"questionFa": "شکسپیر چه دوره‌ای؟",
+"questionFa": "شکسپیر چه دوره‌ای است؟",
 "questionEn": "Shakespeare period?",
 "options": [
 {
 "id": "a",
-"textFa": "قرون وسطا",
+"textFa": "قرون وسطی",
 "textEn": "Middle Ages"
 },
 {
@@ -1375,15 +1375,15 @@ window.LIFE_IN_UK_QUESTIONS = [
 "textEn": "Georgian"
 }
 ],
-"correctOption": "c",
-"explanationFa": "عصر الیزابت.",
+"correctOption": "b",
+"explanationFa": "شکسپیر در عصر الیزابت اول زندگی می‌کرد.",
 "explanationEn": "Elizabethan era."
 },
 {
 "id": 44,
 "topic": "tudor_stuart",
 "difficulty": "medium",
-"questionFa": "آتش‌سوزی بزرگ لندن چه سالی؟",
+"questionFa": "آتش‌سوزی بزرگ لندن چه سالی رخ داد؟",
 "questionEn": "Great Fire of London?",
 "options": [
 {
@@ -1408,14 +1408,14 @@ window.LIFE_IN_UK_QUESTIONS = [
 }
 ],
 "correctOption": "c",
-"explanationFa": "۱۶۶۶.",
+"explanationFa": "آتش‌سوزی بزرگ لندن در سال ۱۶۶۶ رخ داد.",
 "explanationEn": "1666."
 },
 {
 "id": 45,
 "topic": "tudor_stuart",
 "difficulty": "hard",
-"questionFa": "انقلاب محترمانه چه بود؟",
+"questionFa": "انقلاب شکوهمند چه بود؟",
 "questionEn": "Glorious Revolution?",
 "options": [
 {
@@ -1425,7 +1425,7 @@ window.LIFE_IN_UK_QUESTIONS = [
 },
 {
 "id": "b",
-"textFa": "ویلیام ماری بدون جنگ",
+"textFa": "به قدرت رسیدن ویلیام و مری بدون جنگ",
 "textEn": "William Mary peaceful"
 },
 {
@@ -1440,14 +1440,14 @@ window.LIFE_IN_UK_QUESTIONS = [
 }
 ],
 "correctOption": "b",
-"explanationFa": "۱۶۸۸ + منشور حقوق.",
+"explanationFa": "در سال ۱۶۸۸ ویلیام و مری بدون جنگ به قدرت رسیدند و منشور حقوق صادر شد.",
 "explanationEn": "1688 Bill of Rights."
 },
 {
 "id": 46,
 "topic": "tudor_stuart",
 "difficulty": "easy",
-"questionFa": "جیمز یکم پادشاه کدام کشورها؟",
+"questionFa": "جیمز یکم پادشاه کدام کشورها بود؟",
 "questionEn": "James I king of?",
 "options": [
 {
@@ -1472,7 +1472,7 @@ window.LIFE_IN_UK_QUESTIONS = [
 }
 ],
 "correctOption": "b",
-"explanationFa": "انگلستان اسکاتلند.",
+"explanationFa": "جیمز یکم پادشاه هر دو کشور انگلستان و اسکاتلند بود.",
 "explanationEn": "England and Scotland."
 },
 {
@@ -1511,7 +1511,7 @@ window.LIFE_IN_UK_QUESTIONS = [
 "id": 48,
 "topic": "tudor_stuart",
 "difficulty": "medium",
-"questionFa": "باروت‌پود چه سالی بود؟",
+"questionFa": "توطئه باروت چه سالی بود؟",
 "questionEn": "Gunpowder Plot year?",
 "options": [
 {
@@ -1536,14 +1536,14 @@ window.LIFE_IN_UK_QUESTIONS = [
 }
 ],
 "correctOption": "b",
-"explanationFa": "باروت‌پود ۱۶۰۵.",
+"explanationFa": "توطئه باروت در ۱۶۰۵.",
 "explanationEn": "1605."
 },
 {
 "id": 49,
 "topic": "georgian_victorian",
 "difficulty": "easy",
-"questionFa": "انقلاب صنعتی از کجا شروع شد؟",
+"questionFa": "انقلاب صنعتی از کجا آغاز شد؟",
 "questionEn": "Industrial Revolution began?",
 "options": [
 {
@@ -1568,7 +1568,7 @@ window.LIFE_IN_UK_QUESTIONS = [
 }
 ],
 "correctOption": "c",
-"explanationFa": "قرن ۱۸ بریتانیا.",
+"explanationFa": "انقلاب صنعتی در قرن ۱۸ در بریتانیا آغاز شد.",
 "explanationEn": "18th century Britain."
 },
 {
@@ -1600,19 +1600,19 @@ window.LIFE_IN_UK_QUESTIONS = [
 }
 ],
 "correctOption": "b",
-"explanationFa": "جیمز وات موتور بخار.",
+"explanationFa": "جیمز وات موتور بخار را بهبود داد.",
 "explanationEn": "James Watt improved steam engine."
 },
 {
 "id": 51,
 "topic": "georgian_victorian",
 "difficulty": "easy",
-"questionFa": "بزرگترین امپراتوری در چه دوره؟",
+"questionFa": "امپراتوری بریتانیا در چه دوره‌ای بزرگ‌ترین بود؟",
 "questionEn": "Largest empire when?",
 "options": [
 {
 "id": "a",
-"textFa": "قرون وسطا",
+"textFa": "قرون وسطی",
 "textEn": "Middle Ages"
 },
 {
@@ -1632,7 +1632,7 @@ window.LIFE_IN_UK_QUESTIONS = [
 }
 ],
 "correctOption": "b",
-"explanationFa": "دوره ویکتوریا.",
+"explanationFa": "امپراتوری بریتانیا در دوره ویکتوریا بزرگ‌ترین بود.",
 "explanationEn": "Victorian era."
 },
 {
@@ -1664,7 +1664,7 @@ window.LIFE_IN_UK_QUESTIONS = [
 }
 ],
 "correctOption": "b",
-"explanationFa": "۱۸۳۳.",
+"explanationFa": "لغو کامل برده‌داری در امپراتوری بریتانیا در سال ۱۸۳۳ صورت گرفت.",
 "explanationEn": "Abolished 1833."
 },
 {
@@ -1760,7 +1760,7 @@ window.LIFE_IN_UK_QUESTIONS = [
 }
 ],
 "correctOption": "b",
-"explanationFa": "حق رای بیشتر.",
+"explanationFa": "حق رای به افراد بیشتری داده شد.",
 "explanationEn": "Extended voting rights."
 },
 {
@@ -1787,12 +1787,12 @@ window.LIFE_IN_UK_QUESTIONS = [
 },
 {
 "id": "d",
-"textFa": "مطلقه سلطنت",
+"textFa": "سلطنت مطلقه",
 "textEn": "Absolute monarchy"
 }
 ],
 "correctOption": "b",
-"explanationFa": "حق رای عمومی.",
+"explanationFa": "چارتیست‌ها حق رای عمومی و اصلاحات دموکراتیک خواستند.",
 "explanationEn": "Universal suffrage."
 },
 {
@@ -1824,7 +1824,7 @@ window.LIFE_IN_UK_QUESTIONS = [
 }
 ],
 "correctOption": "a",
-"explanationFa": "محصولات فناوری.",
+"explanationFa": "نمایش بزرگ ۱۸۵۱ نمایشگاه محصولات و فناوری بریتانیا بود.",
 "explanationEn": "Products and technology."
 },
 {
@@ -1856,7 +1856,7 @@ window.LIFE_IN_UK_QUESTIONS = [
 }
 ],
 "correctOption": "b",
-"explanationFa": "وینستون چرچیل.",
+"explanationFa": "وینستون چرچیل بریتانیا را در جنگ جهانی دوم رهبری کرد.",
 "explanationEn": "Winston Churchill."
 },
 {
@@ -1888,14 +1888,14 @@ window.LIFE_IN_UK_QUESTIONS = [
 }
 ],
 "correctOption": "b",
-"explanationFa": "۱۸۰۱.",
+"explanationFa": "اتحادیه بریتانیا و ایرلند در سال ۱۸۰۱ تشکیل شد.",
 "explanationEn": "Union 1801."
 },
 {
 "id": 60,
 "topic": "georgian_victorian",
 "difficulty": "medium",
-"questionFa": "نیروی کار صنعتی از کجا؟",
+"questionFa": "نیروی کار کارخانه‌ها از کجا تأمین می‌شد؟",
 "questionEn": "Factory workers from?",
 "options": [
 {
@@ -1920,7 +1920,7 @@ window.LIFE_IN_UK_QUESTIONS = [
 }
 ],
 "correctOption": "b",
-"explanationFa": "از روستا به شهر.",
+"explanationFa": "نیروی کار عمدتاً از روستا به شهرها مهاجرت کرد.",
 "explanationEn": "Countryside to cities."
 },
 {
@@ -2016,7 +2016,7 @@ window.LIFE_IN_UK_QUESTIONS = [
 }
 ],
 "correctOption": "c",
-"explanationFa": "NHS ۱۹۴۸.",
+"explanationFa": "سرویس بهداشت ملی (NHS) در سال ۱۹۴۸ تأسیس شد.",
 "explanationEn": "NHS 1948."
 },
 {
@@ -2048,7 +2048,7 @@ window.LIFE_IN_UK_QUESTIONS = [
 }
 ],
 "correctOption": "b",
-"explanationFa": "خدمات بهداشتی رایگان.",
+"explanationFa": "NHS خدمات بهداشت عمومی رایگان ارائه می‌دهد.",
 "explanationEn": "Free healthcare."
 },
 {
@@ -2112,7 +2112,7 @@ window.LIFE_IN_UK_QUESTIONS = [
 }
 ],
 "correctOption": "b",
-"explanationFa": "تفویض ۱۹۹۹.",
+"explanationFa": "تفویض اختیار یعنی انتقال قدرت به پارلمان‌های محلی در سال ۱۹۹۹.",
 "explanationEn": "Devolution 1999."
 },
 {
@@ -2144,7 +2144,7 @@ window.LIFE_IN_UK_QUESTIONS = [
 }
 ],
 "correctOption": "b",
-"explanationFa": "۱۹۷۳.",
+"explanationFa": "بریتانیا در سال ۱۹۷۳ به اتحادیه اروپا پیوست.",
 "explanationEn": "1973."
 },
 {
@@ -2176,7 +2176,7 @@ window.LIFE_IN_UK_QUESTIONS = [
 }
 ],
 "correctOption": "b",
-"explanationFa": "خروج از EU.",
+"explanationFa": "رأی ۲۰۱۶ بر خروج بریتانیا از اتحادیه اروپا (Brexit) بود.",
 "explanationEn": "Leave EU."
 },
 {
@@ -2208,14 +2208,14 @@ window.LIFE_IN_UK_QUESTIONS = [
 }
 ],
 "correctOption": "b",
-"explanationFa": "بهداشت آموزش رایگان.",
+"explanationFa": "دولت رفاه شامل بهداشت و آموزش رایگان بود.",
 "explanationEn": "Free health and education."
 },
 {
 "id": 70,
 "topic": "modern_britain",
 "difficulty": "hard",
-"questionFa": "کدام کشور 1999 پارلمان بازگرداند؟",
+"questionFa": "کدام کشورها در سال ۱۹۹۹ پارلمان خود را بازپس گرفتند؟",
 "questionEn": "Parliament restored 1999?",
 "options": [
 {
@@ -2239,15 +2239,15 @@ window.LIFE_IN_UK_QUESTIONS = [
 "textEn": "NI"
 }
 ],
-"correctOption": "b",
-"explanationFa": "اسکاتلند و ولز.",
+"correctOption": "c",
+"explanationFa": "در سال ۱۹۹۹ پارلمان‌های اسکاتلند و ولز بازگردانده شدند.",
 "explanationEn": "Scotland and Wales."
 },
 {
 "id": 71,
 "topic": "modern_britain",
 "difficulty": "easy",
-"questionFa": "چرچیل چه دوره‌ای PM بود؟",
+"questionFa": "چرچیل در چه دوره‌ای نخست‌وزیر بود؟",
 "questionEn": "Churchill PM when?",
 "options": [
 {
@@ -2279,7 +2279,7 @@ window.LIFE_IN_UK_QUESTIONS = [
 "id": 72,
 "topic": "modern_britain",
 "difficulty": "medium",
-"questionFa": "دولت رفاه چه کسی تأسیس کرد؟",
+"questionFa": "دولت رفاه را چه کسی تأسیس کرد؟",
 "questionEn": "Who created welfare?",
 "options": [
 {
@@ -2304,14 +2304,14 @@ window.LIFE_IN_UK_QUESTIONS = [
 }
 ],
 "correctOption": "b",
-"explanationFa": "حزب کارگر اتلی.",
+"explanationFa": "کلیمنت اتلی، رهبر حزب کارگر، دولت رفاه را تأسیس کرد.",
 "explanationEn": "Attlee Labour."
 },
 {
 "id": 73,
 "topic": "government",
 "difficulty": "easy",
-"questionFa": "پارلمان بریتانیا شامل چیست؟",
+"questionFa": "پارلمان بریتانیا شامل چه بخش‌هایی است؟",
 "questionEn": "UK Parliament?",
 "options": [
 {
@@ -2336,14 +2336,14 @@ window.LIFE_IN_UK_QUESTIONS = [
 }
 ],
 "correctOption": "c",
-"explanationFa": "عوام لردها پادشاه.",
+"explanationFa": "پارلمان بریتانیا شامل مجلس عوام، مجلس لردها و پادشاه است.",
 "explanationEn": "Commons Lords Monarch."
 },
 {
 "id": 74,
 "topic": "government",
 "difficulty": "easy",
-"questionFa": "سن رای دادن چند سال؟",
+"questionFa": "سن رای دادن در بریتانیا چند سال است؟",
 "questionEn": "Voting age?",
 "options": [
 {
@@ -2463,7 +2463,7 @@ window.LIFE_IN_UK_QUESTIONS = [
 "textEn": "Speaker"
 }
 ],
-"correctOption": "c",
+"correctOption": "b",
 "explanationFa": "پادشاه ملکه.",
 "explanationEn": "Monarch."
 },
@@ -2495,7 +2495,7 @@ window.LIFE_IN_UK_QUESTIONS = [
 "textEn": "Judges"
 }
 ],
-"correctOption": "b",
+"correctOption": "c",
 "explanationFa": "اکثریت مجلس عوام.",
 "explanationEn": "Commons majority."
 },
@@ -2683,11 +2683,11 @@ window.LIFE_IN_UK_QUESTIONS = [
 },
 {
 "id": "d",
-"textFa": "تئوکراسی",
+"textFa": "حکومت دینی",
 "textEn": "Theocracy"
 }
 ],
-"correctOption": "c",
+"correctOption": "b",
 "explanationFa": "پادشاهی مشروطه.",
 "explanationEn": "Constitutional monarchy."
 },
@@ -2779,7 +2779,7 @@ window.LIFE_IN_UK_QUESTIONS = [
 },
 {
 "id": "d",
-"textFa": "بنکور",
+"textFa": "بانگور",
 "textEn": "Bangor"
 }
 ],
@@ -2943,7 +2943,7 @@ window.LIFE_IN_UK_QUESTIONS = [
 "textEn": "NI"
 }
 ],
-"correctOption": "d",
+"correctOption": "c",
 "explanationFa": "انگلستان.",
 "explanationEn": "England."
 },
@@ -3039,7 +3039,7 @@ window.LIFE_IN_UK_QUESTIONS = [
 "textEn": "NI"
 }
 ],
-"correctOption": "c",
+"correctOption": "b",
 "explanationFa": "شمال غربی انگلستان.",
 "explanationEn": "Northwest England."
 },
@@ -3071,7 +3071,7 @@ window.LIFE_IN_UK_QUESTIONS = [
 "textEn": "Tyne"
 }
 ],
-"correctOption": "c",
+"correctOption": "b",
 "explanationFa": "رودخانه تمز.",
 "explanationEn": "River Thames."
 },
@@ -3167,7 +3167,7 @@ window.LIFE_IN_UK_QUESTIONS = [
 "textEn": "Ireland"
 }
 ],
-"correctOption": "d",
+"correctOption": "c",
 "explanationFa": "قدیس حامی انگلستان.",
 "explanationEn": "Englands patron saint."
 },
@@ -3263,7 +3263,7 @@ window.LIFE_IN_UK_QUESTIONS = [
 "textEn": "Ireland"
 }
 ],
-"correctOption": "d",
+"correctOption": "c",
 "explanationFa": "انگلستان.",
 "explanationEn": "England."
 },
@@ -3345,12 +3345,12 @@ window.LIFE_IN_UK_QUESTIONS = [
 },
 {
 "id": "b",
-"textFa": "نشن",
+"textFa": "خار",
 "textEn": "Thistle"
 },
 {
 "id": "c",
-"textFa": "پیاز سومر",
+"textFa": "نرگس",
 "textEn": "Daffodil"
 },
 {
@@ -3360,7 +3360,7 @@ window.LIFE_IN_UK_QUESTIONS = [
 }
 ],
 "correctOption": "b",
-"explanationFa": "نشن.",
+"explanationFa": "خار (نشان ملی اسکاتلند).",
 "explanationEn": "Thistle."
 },
 {
@@ -3583,7 +3583,7 @@ window.LIFE_IN_UK_QUESTIONS = [
 "textEn": "Sikh"
 }
 ],
-"correctOption": "d",
+"correctOption": "c",
 "explanationFa": "مسلمانان.",
 "explanationEn": "Muslims."
 },
@@ -3692,7 +3692,7 @@ window.LIFE_IN_UK_QUESTIONS = [
 "options": [
 {
 "id": "a",
-"textFa": "منشار بزرگ",
+"textFa": "منشور بزرگ",
 "textEn": "Magna Carta"
 },
 {
