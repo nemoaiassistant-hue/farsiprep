@@ -46,7 +46,7 @@ const SHOW_ME_TELL_ME = [
     type: "tell",
     questionFa: "چگونه مطمئن می‌شوید عمق آج و وضعیت لاستیک‌ها قانونی و ایمن است؟",
     questionEn: "How would you check that tyre tread depth and condition are legal and safe?",
-    answerFa: "تمام سطح و دیواره هر لاستیک را از نظر بریدگی، برآمدگی و آسیب بررسی می‌کنم. عمق آج را با عمق‌سنج می‌سنجم؛ حداقل قانونی ۱٫۶ میلی‌متر در سه‌چهارم میانی پهنای آج و در تمام محیط لاستیک است. همچنین مطمئن می‌شوم هیچ جسم خارجی در لاستیک فرو نرفته باشد.",
+    answerFa: "تمام سطح و دیواره هر لاستیک را از نظر بریدگی، برآمدگی و آسیب بررسی می‌کنم. عمق آج را با عمق‌سنج می‌سنجم؛ حداقل قانونی ۱٫۶ میلی‌متر در سه‌چهارم میانی عرض آج و در تمام محیط لاستیک است. همچنین مطمئن می‌شوم هیچ جسم خارجی در لاستیک فرو نرفته باشد.",
     answerEn: "Inspect the tread and sidewalls of every tyre for cuts, bulges and damage. Use a tread-depth gauge; the legal minimum is 1.6 mm across the central three-quarters of the tread breadth and around the entire circumference. Also check for embedded objects.",
     tipFa: "لاستیک زاپاس را نیز، اگر خودرو دارد، مرتب بررسی کنید.",
     tipEn: "Check the spare tyre regularly too, if the vehicle has one."
@@ -56,7 +56,7 @@ const SHOW_ME_TELL_ME = [
     type: "tell",
     questionFa: "چگونه فشار باد لاستیک‌ها را بررسی می‌کنید؟",
     questionEn: "How would you check the tyre pressures?",
-    answerFa: "مقدار توصیه‌شده را از دفترچه خودرو یا برچسب داخل ستون در یا درپوش سوخت پیدا می‌کنم. وقتی لاستیک‌ها سرد هستند، با فشارسنج مطمئن فشار هر لاستیک را اندازه می‌گیرم و تنظیم می‌کنم. درپوش والوها را دوباره می‌بندم و فشار را متناسب با بار خودرو تنظیم می‌کنم.",
+    answerFa: "مقدار توصیه‌شده را از دفترچه خودرو یا برچسب داخل ستون در یا درپوش سوخت پیدا می‌کنم. وقتی لاستیک‌ها سرد هستند، با فشارسنجی مطمئن فشار هر لاستیک را اندازه می‌گیرم و تنظیم می‌کنم. درپوش والوها را دوباره می‌بندم و فشار را متناسب با بار خودرو تنظیم می‌کنم.",
     answerEn: "Find the recommended pressures in the handbook or on the door-pillar or fuel-flap label. When the tyres are cold, use a reliable gauge to measure and adjust each tyre. Refit the valve caps and use the pressure specified for the vehicle's load.",
     tipFa: "فشار لاستیک گرم بالاتر است؛ اندازه‌گیری اصلی را در حالت سرد انجام دهید.",
     tipEn: "Warm tyres read higher; make the main pressure check when they are cold."
@@ -66,7 +66,7 @@ const SHOW_ME_TELL_ME = [
     type: "tell",
     questionFa: "چگونه بررسی می‌کنید چراغ‌های ترمز کار می‌کنند؟",
     questionEn: "How would you check that the brake lights are working?",
-    answerFa: "سوئیچ را در وضعیت لازم قرار می‌دهم و پدال ترمز را فشار می‌دهم. از شخص دیگری می‌خواهم چراغ‌ها را بررسی کند، یا بازتاب آن‌ها را روی دیوار، درِ گاراژ یا سطح بازتابنده می‌بینم. هر دو چراغ اصلی و چراغ ترمز سوم باید روشن، تمیز و سالم باشند.",
+    answerFa: "سوئیچ را در وضعیت مناسب قرار می‌دهم و پدال ترمز را فشار می‌دهم. از شخص دیگری می‌خواهم چراغ‌ها را بررسی کند، یا بازتاب آن‌ها را روی دیوار، درِ گاراژ یا سطح بازتابنده می‌بینم. هر دو چراغ اصلی و چراغ ترمز سوم باید روشن، تمیز و سالم باشند.",
     answerEn: "Turn on the ignition if required and press the brake pedal. Ask someone to check the lights, or use their reflection in a wall, garage door or reflective surface. Both main brake lights and the high-level brake light should illuminate and be clean and undamaged.",
     tipFa: "چراغ ترمز معیوب را پیش از رانندگی تعمیر کنید.",
     tipEn: "Have a faulty brake light repaired before driving."
@@ -138,7 +138,7 @@ const SHOW_ME_TELL_ME = [
     questionEn: "Show how you would operate the rear-window demister.",
     answerFa: "دکمه گرم‌کن شیشه عقب را که معمولاً علامت یک شیشه مستطیلی با خطوط موج‌دار دارد فشار می‌دهم. روشن‌شدن چراغ نشانگر را بررسی می‌کنم و پس از پاک‌شدن بخار، برای کاهش مصرف برق آن را خاموش می‌کنم.",
     answerEn: "Press the rear-window demister button, normally marked with a rectangular window and rising wavy lines. Check its indicator illuminates and switch it off once the window is clear to reduce electrical load.",
-    tipFa: "علامت گرم‌کن شیشه عقب را با بادگیر شیشه جلو اشتباه نگیرید.",
+    tipFa: "علامت گرم‌کن شیشه عقب را با بخارگیر شیشه جلو اشتباه نگیرید.",
     tipEn: "Do not confuse the rear demister symbol with the front windscreen demist control."
   },
   {
@@ -146,7 +146,7 @@ const SHOW_ME_TELL_ME = [
     type: "show",
     questionFa: "نشان دهید چگونه چراغ‌های نورپایین را روشن می‌کنید.",
     questionEn: "Show how you would switch on the dipped headlights.",
-    answerFa: "کلید چراغ‌ها را به وضعیت نورپایین می‌برم و نشانگر مربوط روی صفحه آمپر را بررسی می‌کنم. در خودرو دارای حالت خودکار، در صورت درخواست آزمون مستقیماً نورپایین را انتخاب می‌کنم تا روشن‌بودن آن قطعی باشد.",
+    answerFa: "کلید چراغ‌ها را به وضعیت نورپایین می‌برم و نشانگر مربوط روی صفحه آمپر را بررسی می‌کنم. در خودروهای دارای حالت خودکار، در صورت درخواست آزمون، مستقیماً نورپایین را انتخاب می‌کنم تا روشن‌بودن آن قطعی باشد.",
     answerEn: "Move the lighting control to the dipped-headlight position and check the relevant dashboard indication. On a vehicle with automatic lights, select dipped headlights directly when asked so their operation is certain.",
     tipFa: "نشانگر آبی مربوط به نوربالاست؛ نورپایین معمولاً نشانگر سبز دارد.",
     tipEn: "The blue warning light indicates main beam; dipped beam is normally shown in green."
@@ -186,7 +186,7 @@ const SHOW_ME_TELL_ME = [
     type: "show",
     questionFa: "نشان دهید چگونه عملکرد فرمان کمکی را بررسی می‌کنید.",
     questionEn: "Show how you would check the power-assisted steering.",
-    answerFa: "پیش از روشن‌کردن موتور، فشار ملایمی روی فرمان وارد می‌کنم؛ با روشن‌شدن موتور باید حرکت فرمان به‌طور محسوسی سبک‌تر شود. راه دیگر این است که بلافاصله پس از شروع حرکت، در محل امن بررسی کنم فرمان نرم و پاسخ‌گو است. سنگینی غیرعادی یا چراغ هشدار نشانه عیب است.",
+    answerFa: "پیش از روشن‌کردن موتور، فشار ملایمی روی فرمان وارد می‌کنم؛ با روشن‌شدن موتور باید حرکت فرمان به‌طور محسوسی سبک‌تر شود. راه دیگر این است که بلافاصله پس از شروع حرکت، در محل امن بررسی کنم که فرمان نرم و پاسخ‌گو است. سنگینی غیرعادی یا چراغ هشدار نشانه عیب است.",
     answerEn: "Apply gentle pressure to the steering wheel before starting the engine; when the engine starts, the steering should become noticeably lighter. Alternatively, check immediately after moving off in a safe place that the steering feels light and responsive. Unusual heaviness or a warning light indicates a fault.",
     tipFa: "فرمان را هنگام توقف برای مدت طولانی تا انتها نگه ندارید.",
     tipEn: "Do not hold the steering on full lock for an extended time while stationary."
