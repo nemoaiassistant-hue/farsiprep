@@ -249,20 +249,6 @@
   // =============================================
   function ensureShowMeUI() {
     $('#app').insertAdjacentHTML('beforeend', '<div class="view" id="hazardView"><div id="hazardContainer"></div></div><div class="view" id="showmeView"><div id="showmeContainer"></div></div>');
-    $('#bottomNav').insertAdjacentHTML('beforeend', `
-      <button class="bottom-nav-item" id="navQuiz" data-target="quiz">
-        <span class="bottom-nav-icon">📝</span>
-        <span class="bottom-nav-label">آزمون<br><span dir="ltr">Quiz</span></span>
-      </button>
-      <button class="bottom-nav-item" id="navHazard" data-target="hazard">
-        <span class="bottom-nav-icon">⚠️</span>
-        <span class="bottom-nav-label">خطرات /<br><span dir="ltr">Hazards</span></span>
-      </button>
-      <button class="bottom-nav-item" id="navShowMe" data-target="showme" onclick="openShowMe()">
-        <span class="bottom-nav-icon">🔧</span>
-        <span class="bottom-nav-label">نمایش / توضیح<br><span dir="ltr">Show/Tell</span></span>
-      </button>
-    `);
   }
 
   window.openShowMe = function() {
